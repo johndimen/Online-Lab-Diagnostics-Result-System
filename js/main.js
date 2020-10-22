@@ -228,7 +228,7 @@
 	  'format': 'm/d/yyyy',
 	  'autoclose': true
 	});
-	$('.appointment_time').timepicker();
+		$('.appointment_time').timepicker();
 
 	$('.sample_date').datepicker({
 		'format': 'm/d/yyyy',
@@ -260,6 +260,12 @@
 			$("#other1txt").attr('disabled', !$("#other1txt").attr('disabled'));
 		});
 	});
+
+	$(document).ready(function(){
+		$("#testsubmit").click(function(){
+		  $("#testmodal").modal();
+		});
+	  });
 
 })(jQuery);
 
