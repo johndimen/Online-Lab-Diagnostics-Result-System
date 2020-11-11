@@ -5542,7 +5542,7 @@ a.close.disabled {
   vertical-align: text-top !important; }
 
 .bg-primary {
-  background-color: #007bff !important; }
+  background-color: #007fff !important; }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
@@ -8436,7 +8436,7 @@ h1, h2, h3, h4, h5,
       color: #299adc; }
 
 .ftco-navbar-light {
-  background: #299adc !important;
+  background: #007fff !important;
   position: relative;
   z-index: 3;
   padding: 0;
@@ -8449,7 +8449,7 @@ h1, h2, h3, h4, h5,
     width: 58%;
     content: '';
     background: #2086c2;
-    background: #3bc053;
+    background: #e25446;
     z-index: -1;
     -webkit-transform: matrix(1, 0, -0.9, 1, 100, 0);
     -ms-transform: matrix(1, 0, -0.9, 1, 100, 0);
@@ -8606,7 +8606,7 @@ h1, h2, h3, h4, h5,
   width: 100%;
   height: 700px;
   position: relative;
-  background-size: cover;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: top center; }
   @media (max-width: 991.98px) {
@@ -8624,7 +8624,7 @@ h1, h2, h3, h4, h5,
     opacity: .15;
     background: #000000; }
   .hero-wrap.hero-wrap-2 {
-    height: 600px;
+    height: 290px;
     position: relative;
     background-position: top center; }
     .hero-wrap.hero-wrap-2 .overlay {
@@ -9209,15 +9209,15 @@ textarea.form-control {
         color: #000000; }
         .ftco-footer .ftco-footer-widget ul li a span {
           color: rgba(255, 255, 255, 0.6);
-          color: #299adc;
+          color: #007fff;
           font-size: 14px; }
         .ftco-footer .ftco-footer-widget ul li a:hover {
-          color: #299adc; }
+          color: #007fff; }
   .ftco-footer p {
     color: rgba(0, 0, 0, 0.7); }
   .ftco-footer a {
     color: rgba(0, 0, 0, 0.7);
-    color: #299adc; }
+    color: #007fff; }
     .ftco-footer a:hover {
       color: #fff; }
   .ftco-footer .ftco-heading-2 {
@@ -9231,7 +9231,7 @@ textarea.form-control {
     .ftco-footer .logo a span.flaticon {
       font-size: 20px; }
   .ftco-footer .bg-primary {
-    background: #299adc !important;
+    background: #007fff !important;
     position: relative;
     z-index: 0; }
     .ftco-footer .bg-primary:after {
@@ -9241,7 +9241,7 @@ textarea.form-control {
       bottom: 0;
       width: 55%;
       content: '';
-      background: #3bc053;
+      background: #e25446;
       z-index: -1;
       -webkit-transform: matrix(1, 0, 0.9, 1, -100, 0);
       -ms-transform: matrix(1, 0, 0.9, 1, -100, 0);
