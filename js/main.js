@@ -243,11 +243,15 @@
 		});
 	});
 
+	$('#othertxt').val("");
+
 	$(document).ready(function(){
 		$("#otherss").click(function(){
 			$("#othersstxt").attr('disabled', !$("#othersstxt").attr('disabled'));
 		});
 	});
+
+	$('#othersstxt').val("");
 
 	$(document).ready(function(){
 		$("#others1").click(function(){
@@ -255,17 +259,44 @@
 		});
 	});
 
+	$('#others1txt').val("");
+
 	$(document).ready(function(){
 		$("#other1").click(function(){
 			$("#other1txt").attr('disabled', !$("#other1txt").attr('disabled'));
 		});
 	});
 
+	$('#other1txt').val("");
+	$('#site').val("");
+
 	$(document).ready(function(){
 		$("#testsubmit").click(function(){
 		  $("#testmodal").modal();
 		});
 	  });
+
+	$('.gender').click(function() {
+        $(this).siblings('input:checkbox').prop('checked', false);
+	});
+	
+	$('.fasting').click(function() {
+        $(this).siblings('input:checkbox').prop('checked', false);
+	});
+
+	$('.urgency').click(function() {
+        $(this).siblings('input:checkbox').prop('checked', false);
+	});
+
+	$('input[type="submit"]').click(function(){
+		$('input[type="checkbox"]').each(function(){
+		  $(this).prop('checked', false);
+	  });
+	});
+
+	$(document).ready(function(){
+		$(':checkbox:checked').prop('checked',false);
+	});
 
 })(jQuery);
 

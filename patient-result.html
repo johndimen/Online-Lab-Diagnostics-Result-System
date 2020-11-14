@@ -102,7 +102,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Result</h5>
@@ -110,9 +110,29 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="max-height: 450px;">
                     <p>Dear Mr/Ms (patient name here),</p>
-                    <p><center>(positive/negative medical result picture here)</center></p>
+                    <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="result-section">
+                        <div class="container">
+                            <div class="row d-flex">
+                                <div class="col-md-6 col-lg-5 d-flex ftco-animate" style="max-height: 400px;">
+                                    <div class="img w-100 d-flex align-self-lg-auto align-items-center" style="background-image:url(images/result.jpg); background-size: contain;">
+                                </div>
+                                </div>
+                                <div class="col-md-6 col-lg-7 pl-lg-5 py-md-5">
+                                    <div class="py-md-5">
+                                        <div class="row justify-content-start pb-3">
+                                            <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
+                                                <p><center>(result table here)</center></p>
+                                                <table></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <center><legend>Medical Summary</legend></center>
                     <p><center>(Medical summary here)</center></p>
                 </div>
                 <div class="modal-footer">
