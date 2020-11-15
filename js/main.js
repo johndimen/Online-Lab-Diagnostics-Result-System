@@ -270,6 +270,13 @@
 	$('#other1txt').val("");
 	$('#site').val("");
 
+
+	$(document).ready(function(){
+		$("#editModal").click(function(){
+			$("#medsummary").attr('disabled', !$("#medsummary").attr('disabled'));
+		});
+	});
+
 	$(document).ready(function(){
 		$("#testsubmit").click(function(){
 		  $("#testmodal").modal();
@@ -298,5 +305,17 @@
 		$(':checkbox:checked').prop('checked',false);
 	});
 
+	$(document).ready(function () {
+		$('#dtDynamicVerticalScrollExample').DataTable({
+		"scrollY": "50vh",
+		"scrollCollapse": true,
+		});
+		$('.dataTables_length').addClass('bs-select');
+		});
+	
+		$(document).ready(function() {
+			$('#dtDynamicVerticalScrollExample').DataTable();
+		} );
+	
 })(jQuery);
 

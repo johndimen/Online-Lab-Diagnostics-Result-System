@@ -52,15 +52,25 @@
 <section class="ftco-section ftco-no-pt  ftco-services-2 bg-light" style="margin-bottom: 30px;">
     <div class="container">
       <div class=" heading-section ftco-animate" >
-        <h2 class="mb-3" style="padding-top: 50px;">Released Request<span> Results</span></h2>
+        <div class="row">
+          <div class="col-12">
+            <div class="col-6">
+              <h2 class="mb-3" style="padding-top: 50px;">Released Request<span> Results</span></h2>
+            </div>
+            <div class="col-6" style="float: right; padding-bottom: 30px;" >
+              <button type="button" style="float: right;"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#addModal">Add Result</button>
+            </div>
+          </div>
+        </div>
     </div>
     <table class="table table-striped table-bordered ftco-animate">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Patient #</th>
+            <th scope="col">Name</th>
+            <th scope="col">Eval</th>
+            <th scope="col">Date Finished</th>
+            <th scope="col">Options</th>
           </tr>
         </thead>
         <tbody>
@@ -69,49 +79,130 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">View</button>
+            </td>
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>@fat</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">View</button>
+            </td>
           </tr>
           <tr>
             <th scope="row">3</th>
             <td>Larry</td>
             <td>the Bird</td>
             <td>@twitter</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">View</button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
-  
-
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Open Modal</button>
-
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
       <div class="modal-content">
+        <form action="" method="post">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Publish Result</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          
+          <div class="">
+            <legend>Patient Details</legend>
+            <table class="table table-striped table-bordered ftco-animate">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Patient #</th>
+                  <th scope="col">Patient Name</th>
+                  <th scope="col">Evaluation Result </th>
+                  <th scope="col">Date Finished</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="">
+            <fieldset>
+              <legend>Medical Summary</legend>
+              <textarea name="medsummary" id="medsummary" class="form-control" disabled="disabled" style="width: 100%;" cols="" rows="5"></textarea>
+            </fieldset>
+          </div>
+       
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" name="editModal" id="editModal">Edit</button>
+          <button type="submit" class="btn btn-secondary">Save changes & Publish</button>
+          <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" data-backdrop="static" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+          <form action="" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addModalLabel">Add Result</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="">
+              <input type="search" name="search" id="search" class="form-control" placeholder="Patient search">
+            </div>
+            <div class="py-sm-3">
+              <legend>Patient Details</legend>
+              <table class="table table-striped table-bordered ftco-animate">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Patient #</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Evaluation Result </th>
+                    <th scope="col">Date Tested</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary">Add Result</button>
+            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 <section class="ftco-section img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
     <div class="overlay"></div>
@@ -133,8 +224,8 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="exampleModal" data-backdrop="static"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -147,7 +238,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary">Publish</button>
         </div>
       </div>
     </div>
