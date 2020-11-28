@@ -1,3 +1,15 @@
+<?php 
+
+include("php_action/db_config.php");
+include("php_action/session.php");
+
+if(!isset($_SESSION['login_user'])){
+  header("location: admin-login.html");
+  die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,8 +49,8 @@
   <ul class="navbar-nav  m-lg-auto">
     <li class="nav-item  active"><a href="admin-page.html" class="nav-link">Home</a></li>
     <li class="nav-item"><a href="admin-request.html" class="nav-link">Lab Request</a></li>
-    <li class="nav-item"><a href="patient-results.html" class="nav-link">Lab Results</a></li>
-    <li class="nav-item"> <a href="" class="nav-link">Log out</a></li>
+    <li class="nav-item"><a href="admin-results.html" class="nav-link">Lab Results</a></li>
+    <li class="nav-item"> <a href="php_action/logout.php" class="nav-link">Log out</a></li>
   </ul>
 </div>
 </div>
@@ -52,7 +64,7 @@
 <section class="ftco-section ftco-no-pt ftco-services-2 bg-light" style="margin-bottom: 30px;">
   <div class="container">
     <div class=" heading-section ftco-animate" >
-      <h2 class="mb-3" style="padding-top: 50px;"> Welcome! <span> (name here)!</span></h2>
+      <h2 class="mb-3" style="padding-top: 50px;"> Welcome!, <span><?php echo $login_session ?>!</span></h2>
   </div>
 
   <table class="table table-striped table-bordered ftco-animate">
@@ -63,37 +75,17 @@
         <th scope="col">First</th>
         <th scope="col">Last</th>
         <th scope="col">Date Submit</th>
-        <th scope="col">Option</th>
       </tr>
     </thead>
     <tbody>
+      <?php while($receivetable = mysqli_fetch_array($dashquery1)){ ?>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td></td>
-        <td>
-          <a href="admin-request.html" class="btn btn-secondary">View</a>
-        </td>
+        <th scope="row"> <?php echo $receivetable[0] ?> </th>
+        <td> <?php echo $receivetable['Patient_Fname'] ?> </td>
+        <td> <?php echo $receivetable['Patient_Lname'] ?> </td>
+        <td> <?php echo $receivetable['Request_Date'] ?> </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td></td>
-        <td>
-          <a href="admin-request.html" class="btn btn-secondary">View</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td></td>
-        <td>
-          <a href="admin-request.html" class="btn btn-secondary">View</a>
-        </td>
-      </tr>
+      <?php }?>
     </tbody>
   </table>
 
@@ -105,37 +97,17 @@
         <th scope="col">Name</th>
         <th scope="col">Eval</th>
         <th scope="col">Date Finished</th>
-        <th scope="col">Options</th>
       </tr>
     </thead>
     <tbody>
+      <?php while($releasetable = mysqli_fetch_array($dashquery2)){ ?>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td></td>
-        <td>
-          <a href="admin-results.html" class="btn btn-secondary">View</a>
-        </td>
+        <th scope="row"> <?php echo $releasetable[0] ?> </th>
+        <td> <?php echo $releasetable['Patient_Name'] ?> </td>
+        <td> <?php echo $releasetable['Result'] ?> </td>
+        <td> <?php echo $releasetable['Date_Result'] ?> </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td></td>
-        <td>
-          <a href="admin-results.html" class="btn btn-secondary">View</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td></td>
-        <td>
-          <a href="admin-results.html" class="btn btn-secondary">View</a>
-        </td>
-      </tr>
+      <?php }?>
     </tbody>
   </table>
   <!--

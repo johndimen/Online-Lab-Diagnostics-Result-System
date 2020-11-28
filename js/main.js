@@ -317,6 +317,7 @@
 			$('#dtDynamicVerticalScrollExample').DataTable();
 		} );
 		
+	$('#username').val("");
 
 })(jQuery);
 

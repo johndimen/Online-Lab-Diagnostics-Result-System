@@ -140,10 +140,19 @@
               </tbody>
             </table>
           </div>
-          <div class="">
+          <div class=" ftco-animate">
+            <fieldset>
+              <label for="eval">Evaluation Result</label>
+              <select class="form-control" name="eval" id="eval">
+                <option value="positive">Positive</option>
+                <option value="nagative">Negative</option>
+              </select>
+            </fieldset>
+          </div>
+          <div class=" ftco-animate">
             <fieldset>
               <legend>Medical Summary</legend>
-              <textarea name="medsummary" id="medsummary" class="form-control" disabled="disabled" style="width: 100%;" cols="" rows="5"></textarea>
+              <textarea name="medsummary" id="medsummary" class="form-control" disabled="disabled" style="width: 100%;" cols="" rows="3"></textarea>
             </fieldset>
           </div>
        
@@ -182,6 +191,7 @@
                     <th scope="col">Patient Name</th>
                     <th scope="col">Evaluation Result </th>
                     <th scope="col">Date Tested</th>
+                    <th scope="col">Published</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -190,6 +200,7 @@
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>

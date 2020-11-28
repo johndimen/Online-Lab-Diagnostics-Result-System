@@ -24,7 +24,6 @@
   
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
-    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -54,7 +53,7 @@
         <div class=" heading-section ftco-animate" >
             <center><h2 class="mb-3"style="padding-top: 50px;">Personel <span>Log in</span></h2></center>
         </div>
-    <form action="/phpscripts/login.php" method="POST" class="ftco-animate">
+    <form action="php_action/login.php" method="POST" class="ftco-animate">
         <fieldset>
             <center><legend>Authorized Personel Only!</legend></center>
             <div class="row" style="margin-left: 26%;">
@@ -66,7 +65,7 @@
             </div>
             </div>
             <div class="form-group" style="margin-left: 37.8%">
-                <input type="submit" value="Login" class="btn btn-secondary py-3 px-5" name="resultsubmit" id="resultsubmit">.
+                <button type="submit" value="Login" class="btn btn-secondary py-3 px-5" name="login" id="login">Log in</button>
                 <input type="reset" value="Reset" class="btn btn-primary btn-outline-primary py-3 px-5">
             </div>
         </fieldset>
