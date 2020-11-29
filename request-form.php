@@ -56,25 +56,25 @@
         <div class="form-group row">
             <div class="col-6">
                 <fieldset>
-                    <legend>Patient Details:</legend>
+                    <legend style="margin-bottom: 4px;">Patient Details:</legend>
                     <div class="row">
                         <div class="col-4">
                             <label for="name" style="padding-top: 10px;" >Name:</label>
                         </div>
                         <div class="col-8">
-                            <input type="text" style="width: 100%;" class="form-control"  name="name" id="name">
+                            <input type="text" style="width: 100%;" class="form-control" placeholder="First Name" name="name" id="name">
                         </div>
                         <div class="col-4">
-                            <label for="address" style="padding-top: 10px;" >Address:</label>
+                            <label for="address" style="padding-top: 10px;" >Current Address:</label>
                         </div>
                         <div class="col-8">
-                            <input type="text" style="width: 100%;" class="form-control"  name="address" id="address">
+                            <input type="text" style="width: 100%;" class="form-control" placeholder="House #, Lot # - Block #, Street" name="address" id="address">
                         </div>
                         <div class="col-4">
                             <label for="number" style="padding-top: 10px;" >Contact Number:</label>
                         </div>
                         <div class="col-8">
-                            <input type="tel" class="form-control" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}">
+                            <input type="tel" class="form-control" placeholder="Cellphone or Telephone #" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}">
                         </div>
                         <div class="col-4">
                             <label for="dob" style="padding-top: 10px;" >Date Of Birth:</label>
@@ -86,45 +86,20 @@
                             <label for="gender" style="padding-top: 10px;" >Gender:</label>
                         </div>
                         <div class="col-8" style="padding-top: 10px;" >
-                            <label for="male">Male </label>
-                                <input type="checkbox" class="gender" name="male" id="male">
-                            <label for="female" style="padding-left: 20px;">Female</label>
-                                <input type="checkbox" class="gender" name="female" id="female">
+                            <label for="male" style=" padding-right:10px;" >Male </label>
+                                <input type="checkbox" class="gender" value="male" name="male" id="male">
+                            <label for="female" style="padding-left: 20px; padding-right:10px;">Female</label>
+                                <input type="checkbox" class="gender" value="female" name="female" id="female">
                         </div>
                     </div>
                 </fieldset>
             </div>
-            <div class="col-6">
-                <!--
-                <fieldset>
-                    <legend>Requester Details:</legend>
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="reqname" style="padding-top: 10px;" >Name:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="reqname" id="reqname">
-                        </div>
-                        <div class="col-4">
-                            <label for="org" style="padding-top: 10px;" >Organization:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="org" id="org">
-                        </div> 
-                        <div class="col-4">
-                            <label for="addr" style="padding-top: 10px;" >Address:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="addr" id="addr">
-                        </div>
-                        <div class="col-4">
-                            <label for="contact" style="padding-top: 10px;" >Contact Number:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="contact" id="contact">
-                        </div>             
-                    </div>
-                </fieldset>-->
+            <div class="col-6" style="margin-top: 47px;">
+                <input type="text" class="form-control" name="Lname" id="Lname" placeholder="Last Name">
+                <input type="text" class="form-control" name="City" id="City" placeholder="City">
+                <input type="text" class="form-control" name="State" id="State" placeholder="State/Province">
+                <input type="text" class="form-control" name="Zipcode" id="Zipcode" placeholder="Zipcode">
+                <input type="email" class="form-control" name="Email" id="Email"  placeholder="E-mail Address">
             </div>
         </div>
         <div class="form-group">
@@ -136,19 +111,19 @@
                             <label for="urgency" style="padding-top: 10px;" >Urgency:</label>
                         </div>
                         <div class="col-8" style="padding-top: 10px; padding-left: 25px;" >
-                            <label for="normal">Normal </label>
-                                <input type="checkbox" class="urgency" name="normal" id="normal">
-                            <label for="normal" style="padding-left: 20px;">Urgent</label>
-                                <input type="checkbox" class="urgency" name="urgent" id="urgent">
+                            <label for="normal" style=" padding-right:10px;" >Normal </label>
+                                <input type="checkbox" class="urgency" value="normal" name="normal" id="normal">
+                            <label for="normal" style="padding-left: 20px; padding-right:10px;">Urgent</label>
+                                <input type="checkbox" class="urgency" value="urgent" name="urgent" id="urgent">
                         </div>
                         <div class="col-4">
                             <label for="fasting" style="padding-top: 10px;" ></label>
                         </div>
                         <div class="col-8" style="padding-top: 10px; padding-left: 25px;" >
-                            <label for="fasting">Fasting </label>
-                                <input type="checkbox" class="fasting" name="fasting" id="fasting">
-                            <label for="non-fasting" style="padding-left: 20px;">Non-fasting</label>
-                                <input type="checkbox" class="fasting" name="noo-fasting" id="non-fasting">
+                            <label for="fasting" style=" padding-right:10px;">Fasting </label>
+                                <input type="checkbox" value="fasting" class="fasting" name="fasting" id="fasting">
+                            <label for="non-fasting" style="padding-left: 20px; padding-right:10px;">Non-fasting</label>
+                                <input type="checkbox" value="non-fasting" class="fasting" name="noo-fasting" id="non-fasting">
                         </div>
                         
                     </div>
@@ -175,28 +150,29 @@
                 <fieldset>
                     <div class="" style="padding-top: 15px;">
                         <div class="col-12">
-                            <label for="" style="padding-left: 150px;"></label>
-                            <input type="checkbox" class="test" name="blood" id="blood">
-                                <label for="blood" style="padding-right: 30px;">Blood</label>
+                            <label for="" style="padding-left: 100px;"></label>
+                            <input type="checkbox" value="" class="test" name="blood" id="blood">
+                                <label for="blood" style="padding-right: 30px; padding-left: 10px;">Blood</label>
                             <input type="checkbox" class="test" name="urine" id="urine">
-                                <label for="urine" style="padding-right: 30px;">Urine</label>
+                                <label for="urine" style="padding-right: 30px; padding-left: 10px;">Urine</label>
                             <input type="checkbox" class="test" name="swab" id="swasb">
-                                <label for="swab" style="padding-right: 30px;">Swab</label>
+                                <label for="swab" style="padding-right: 30px; padding-left: 10px;">Swab</label>
                             <input type="checkbox" class="test" name="tissue" id="tissue">
-                                <label for="tissue" style="padding-right: 30px;">Tissue</label>
+                                <label for="tissue" style="padding-right: 30px; padding-left: 10px;">Tissue</label>
                             <input type="checkbox" class="test" name="faeces" id="faeces">
-                                <label for="faeces" style="padding-right: 30px;">Faeces</label>
+                                <label for="faeces" style="padding-right: 30px; padding-left: 10px;">Faeces</label>
                             <input type="checkbox" class="test" name="sputum" id="sputum">
-                                <label for="sputum" style="padding-right: 30px;"> Sputum</label>
+                                <label for="sputum" style="padding-right: 30px; padding-left: 10px;"> Sputum</label>
                             <input type="checkbox" class="test" name="fluids" id="fluids">
-                                <label for="fluids" style="padding-right: 30px;">Fluids</label>
+                                <label for="fluids" style="padding-right: 30px; padding-left: 10px;">Fluids</label>
                             <input type="checkbox" class="test" name="cytology" id="cytology">
-                                <label for="cytology">Cytology</label>
+                                <label for="cytology" style=" padding-left: 10px;">Cytology</label>
                         </div>
                         <div class="col-12 row" style="padding-left:180px;">
-                            <label for="otherx" style="padding-top: 10px;"> Other, namely:</label>
+                            <input type="checkbox" name="otherx" id="otherx">
+                                <label for="otherx" style="padding-top: 10px; padding-left: 10px;"> Other, namely:</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" name="otherx" id="otherx">
+                                <input type="text" class="form-control" disabled="disabled" name="otherxtxt" id="otherxtxt">
                             </div>
                         </div>
                     </div>

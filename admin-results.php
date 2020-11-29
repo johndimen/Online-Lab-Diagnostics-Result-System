@@ -149,6 +149,7 @@
               </select>
             </fieldset>
           </div>
+          
           <div class=" ftco-animate">
             <fieldset>
               <legend>Medical Summary</legend>

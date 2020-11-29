@@ -267,6 +267,12 @@
 		});
 	});
 
+	$(document).ready(function(){
+		$("#otherx").click(function(){
+			$("#otherxtxt").attr('disabled', !$("#otherxtxt").attr('disabled'));
+		});
+	});
+
 	$('#other1txt').val("");
 	$('#site').val("");
 
@@ -286,12 +292,28 @@
 	$('.gender').click(function() {
         $(this).siblings('input:checkbox').prop('checked', false);
 	});
+
+	$('.gender1').click(function() {
+        $(this).siblings('input:checkbox').prop('checked', false);
+	});
 	
 	$('.fasting').click(function() {
         $(this).siblings('input:checkbox').prop('checked', false);
 	});
 
 	$('.urgency').click(function() {
+        $(this).siblings('input:checkbox').prop('checked', false);
+	});
+
+	$('.tested').click(function() {
+        $(this).siblings('input:checkbox').prop('checked', false);
+	});
+
+	$('.preggy').click(function() {
+        $(this).siblings('input:checkbox').prop('checked', false);
+	});
+
+	$('.contact').click(function() {
         $(this).siblings('input:checkbox').prop('checked', false);
 	});
 
