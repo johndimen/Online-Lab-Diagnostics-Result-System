@@ -1,4 +1,9 @@
+<?php
+include("php_action/db_config.php");
+include("php_action/add/results.php");
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +29,7 @@
   
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
+    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -37,7 +43,7 @@
  <div class="collapse navbar-collapse" id="ftco-nav">
   <ul class="navbar-nav  m-lg-auto">
     <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
-    <li class="nav-item " style="padding-left: 30px;"><a href="patient-result.php" class="nav-link">Lab Results</a></li>
+    <li class="nav-item active" style="padding-left: 30px;"><a href="patient-result.php" class="nav-link">Lab Results</a></li>
   </ul>
 </div>
 </div>
@@ -48,34 +54,41 @@
   <div class="overlay"></div>
 </section>
 
-<section class="ftco-section ftco-no-pt ftco-no-pb ftco-services-2 bg-light">
-    <div class="container">
+<section class="ftco-section ftco-no-pt ftco-no-pb ftco-services-2 bg-light" >
+    <div class="container" style="padding-bottom: 50px;">
         <div class=" heading-section ftco-animate" >
-            <center><h2 class="mb-3"style="padding-top: 50px;">Personel <span>Log in</span></h2></center>
+            <center><h2 class="mb-3"style="padding-top: 50px;">Search your <span>Result Here</span></h2></center>
         </div>
-    <form action="php_action/login.php" method="POST" class="ftco-animate">
+    <form action="" method="get" class="ftco-animate">
         <fieldset>
-            <center><legend>Authorized Personel Only!</legend></center>
-            <div class="row" style="margin-left: 26%;">
-            <div class="form-group " style="padding-right: 20px;">
-                <input type="text" class="form-control" name="username" id="username" placeholder="Username">
-            </div>
-            <div class="form-group" style="padding-left: 20px;">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-            </div>
-            </div>
-            <div class="form-group" style="margin-left: 37.8%">
-                <button type="submit" value="Login" class="btn btn-secondary py-3 px-5" name="login" id="login">Log in</button>
-                <input type="reset" value="Reset" class="btn btn-primary btn-outline-primary py-3 px-5">
-            </div>
+            <center><legend>Patient Result</legend></center>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="patientid">Patient ID</label>
+                            <input type="text" class="form-control" name="patientid" id="patientid">
+                        <label for="examid" >Exam ID</label>
+                            <input type="text" class="form-control" name="examid" id="examid">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="birthday" >Birthdate</label>
+                            <input type="date" class="form-control" name="birthday" id="birthday">
+                    </div>
+                    <div class="form-group" style="padding-top: 28px;">
+                        <button type="submit" value="Search" class="btn btn-secondary btn-lg" name="resultsubmit" id="resultsubmit">Search</button>
+                        <button type="reset" value="Reset" class="btn btn-outline-primary btn-lg">Reset</button>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Result Modal</button>
+                    </div>
+                </div>
+            </div> 
         </fieldset>
     </form>
-    
-
   </div>
 </section>
 
-<section class="ftco-section ftco-animate img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
+<section class="ftco-section img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-end">
@@ -94,6 +107,62 @@
 </footer>
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Result</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="max-height: 450px;">
+                    <p>Dear Mr/Ms (patient name here),</p>
+                    <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="result-section">
+                        <div class="container">
+                            <div class="row d-flex">
+                                <div class="col-md-6 col-lg-5 d-flex ftco-animate" style="max-height: 400px;">
+                                    <div class="img w-100 d-flex align-self-lg-auto align-items-center" style="background-image:url(images/result.jpg); background-size: contain;">
+                                </div>
+                                </div>
+                                <div class="col-md-6 col-lg-7 pl-lg-5" style="max-height: 400px;">
+                                    <div class="py-md-5">
+                                        <div class="row justify-content-start pb-3">
+                                            <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
+                                                <table class="table table-striped table-bordered ftco-animate">
+                                                    <h5>Medical Result</h5>
+                                                    <thead class="thead-dark">
+                                                      <tr>
+                                                        <th scope="col">Patient #</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Eval</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>Mark</td>
+                                                        <td>Otto</td>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <center><legend>Medical Summary</legend></center>
+                    <p><center>(Medical summary here)</center></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 <!-- loader -->

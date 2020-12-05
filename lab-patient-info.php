@@ -1,4 +1,9 @@
+<?php
+include("php_action/db_config.php");
+include("php_action/add/lab-patient_info.php");
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +29,7 @@
   
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
+    
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -48,34 +54,61 @@
   <div class="overlay"></div>
 </section>
 
-<section class="ftco-section ftco-no-pt ftco-no-pb ftco-services-2 bg-light">
-    <div class="container">
+<section class="ftco-section ftco-no-pt ftco-no-pb ftco-services-2 bg-light" >
+    <div class="container" style="padding-bottom: 50px;">
         <div class=" heading-section ftco-animate" >
-            <center><h2 class="mb-3"style="padding-top: 50px;">Personel <span>Log in</span></h2></center>
+            <center><h2 class="mb-3"style="padding-top: 50px;">Patient <span>Information Sheet</span></h2></center>
+            <legend> Please Fill-up the form truthfully!</legend>
+            <label>Please, Enter your Personal details</label>
         </div>
-    <form action="php_action/login.php" method="POST" class="ftco-animate">
+    <form action="" method="post" class="ftco-animate">
         <fieldset>
-            <center><legend>Authorized Personel Only!</legend></center>
-            <div class="row" style="margin-left: 26%;">
-            <div class="form-group " style="padding-right: 20px;">
-                <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+            <center><legend></legend></center>
+            <div class="">
+                    <div class="row">
+                        <div class="col-6" style="margin-bottom: 20px;">
+                            <label for="covidDOB">What is your Date of Birth:</label>
+                            <input type="date" class="form-control" name="covidDOB" id="covidDOB">
+                        </div>
+                    <div class="col-6">
+                        <label for="gender">Whats is your gender?</label>
+                        <div class="">
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="n/a">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="Fname" id="Fname" placeholder="First Name">
+                                <input type="text" class="form-control" name="Lname" id="Lname" placeholder="Last Name">
+                                <input type="text" class="form-control" name="Address1" id="Address1" placeholder="Current Address">
+                                <input type="text" class="form-control" name="City" id="City" placeholder="City">
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="State" id="State" placeholder="State/Province">
+                                <input type="text" class="form-control" name="Zipcode" id="Zipcode" placeholder="Zipcode">
+                                <input type="email" class="form-control" name="Email" id="Email"  placeholder="E-mail Address">
+                                <input type="tel" class="form-control" name="Contact" id="Contact" placeholder="Contact Number">
+                            </div>
+                        </div>
+                    </div>
             </div>
-            <div class="form-group" style="padding-left: 20px;">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-            </div>
-            </div>
-            <div class="form-group" style="margin-left: 37.8%">
-                <button type="submit" value="Login" class="btn btn-secondary py-3 px-5" name="login" id="login">Log in</button>
-                <input type="reset" value="Reset" class="btn btn-primary btn-outline-primary py-3 px-5">
+            <div class="py-4" align="center">
+                <button type="submit" class="btn btn-lg btn-secondary" name="submit" >Submit</button>
+                <button type="reset" class="btn btn-lg btn-outline-primary" >Clear</button>
             </div>
         </fieldset>
     </form>
-    
-
   </div>
 </section>
 
-<section class="ftco-section ftco-animate img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
+<section class="ftco-section img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-end">
@@ -92,7 +125,6 @@
 
 <footer class="ftco-footer" style="background-color: #e25446;">
 </footer>
-
 
 
 

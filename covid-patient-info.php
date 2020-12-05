@@ -1,3 +1,19 @@
+<?php
+include("php_action/db_config.php");
+include("php_action/add/covid-patient.php");
+include("php_action/retrieve/covid-patient.php");
+//include("php_action/random.php");
+
+$randpatient = rand(0,999999999);
+
+$day = date('D');
+$day1 = date('d');
+
+$covidpatient =  "CP-$randpatient-$day-$day1"; 
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +52,7 @@
  <div class="collapse navbar-collapse" id="ftco-nav">
   <ul class="navbar-nav  m-lg-auto">
     <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
-    <li class="nav-item active" style="padding-left: 30px;"><a href="patient-result.html" class="nav-link">Lab Results</a></li>
+    <li class="nav-item " style="padding-left: 30px;"><a href="patient-result.php" class="nav-link">Lab Results</a></li>
   </ul>
 </div>
 </div>
@@ -50,32 +66,52 @@
 <section class="ftco-section ftco-no-pt ftco-no-pb ftco-services-2 bg-light" >
     <div class="container" style="padding-bottom: 50px;">
         <div class=" heading-section ftco-animate" >
-            <center><h2 class="mb-3"style="padding-top: 50px;">Search your <span>Result Here</span></h2></center>
+            <center><h2 class="mb-3"style="padding-top: 50px;">Patient <span>Information Sheet</span></h2></center>
+            <legend> Please Fill-up the form truthfully!</legend>
+            <label>Please, Enter your Personal details</label>
         </div>
-    <form action="" method="get" class="ftco-animate">
+    <form action="" method="post" class="ftco-animate">
         <fieldset>
-            <center><legend>Patient Result</legend></center>
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="patientid">Patient ID</label>
-                            <input type="text" class="form-control" name="patientid" id="patientid">
-                        <label for="examid" >Exam ID</label>
-                            <input type="text" class="form-control" name="examid" id="examid">
+            <input type="text" name="patientid" value="<?php echo $covidpatient?>">
+            <div class="">
+                    <div class="row">
+                        <div class="col-6" style="margin-bottom: 20px;">
+                            <label for="covidDOB">What is your Date of Birth:</label>
+                            <input type="date" class="form-control" name="covidDOB" id="covidDOB">
+                        </div>
+                    <div class="col-6">
+                        <label for="gender">Whats is your gender?</label>
+                        <div class="">
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="n/a">Prefer not to say</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="birthday" >Birthdate</label>
-                            <input type="date" class="form-control" name="birthday" id="birthday">
                     </div>
-                    <div class="form-group" style="padding-top: 28px;">
-                        <button type="submit" value="Search" class="btn btn-secondary btn-lg" name="resultsubmit" id="resultsubmit">Search</button>
-                        <button type="reset" value="Reset" class="btn btn-outline-primary btn-lg">Reset</button>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Result Modal</button>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="Fname" id="Fname" placeholder="First Name">
+                                <input type="text" class="form-control" name="Lname" id="Lname" placeholder="Last Name">
+                                <input type="text" class="form-control" name="Address1" id="Address1" placeholder="Current Address">
+                                <input type="text" class="form-control" name="City" id="City" placeholder="City">
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="State" id="State" placeholder="State/Province">
+                                <input type="text" class="form-control" name="Zipcode" id="Zipcode" placeholder="Zipcode">
+                                <input type="email" class="form-control" name="Email" id="Email"  placeholder="E-mail Address">
+                                <input type="tel" class="form-control" name="Contact" id="Contact" placeholder="Contact Number">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div> 
+            </div>
+            <div class="py-4" align="center">
+                <button type="submit" class="btn btn-lg btn-secondary" name="next" >Next</button>
+                <button type="reset" class="btn btn-lg btn-outline-primary" >Clear</button>
+            </div>
         </fieldset>
     </form>
   </div>
@@ -99,63 +135,6 @@
 <footer class="ftco-footer" style="background-color: #e25446;">
 </footer>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Result</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="max-height: 450px;">
-                    <p>Dear Mr/Ms (patient name here),</p>
-                    <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="result-section">
-                        <div class="container">
-                            <div class="row d-flex">
-                                <div class="col-md-6 col-lg-5 d-flex ftco-animate" style="max-height: 400px;">
-                                    <div class="img w-100 d-flex align-self-lg-auto align-items-center" style="background-image:url(images/result.jpg); background-size: contain;">
-                                </div>
-                                </div>
-                                <div class="col-md-6 col-lg-7 pl-lg-5" style="max-height: 400px;">
-                                    <div class="py-md-5">
-                                        <div class="row justify-content-start pb-3">
-                                            <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
-                                                <table class="table table-striped table-bordered ftco-animate">
-                                                    <h5>Medical Result</h5>
-                                                    <thead class="thead-dark">
-                                                      <tr>
-                                                        <th scope="col">Patient #</th>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Eval</th>
-                                                      </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                      <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                      </tr>
-                                                    </tbody>
-                                                  </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <center><legend>Medical Summary</legend></center>
-                    <p><center>(Medical summary here)</center></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 <!-- loader -->

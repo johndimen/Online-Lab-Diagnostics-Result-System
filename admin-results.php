@@ -1,3 +1,16 @@
+<?php 
+
+include("php_action/db_config.php");
+include("php_action/session.php");
+include("php_action/retrieve/release.php");
+
+if(!isset($_SESSION['login_user'])){
+  header("location: admin-login.html");
+  die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,10 +48,10 @@
  </button>
  <div class="collapse navbar-collapse" id="ftco-nav">
   <ul class="navbar-nav  m-lg-auto">
-    <li class="nav-item "><a href="admin-page.html" class="nav-link">Home</a></li>
-    <li class="nav-item"><a href="admin-request.html" class="nav-link">Lab Request</a></li>
-    <li class="nav-item active"><a href="admin-results.html" class="nav-link">Lab Results</a></li>
-    <li class="nav-item"> <a href="" class="nav-link">Log out</a></li>
+    <li class="nav-item "><a href="admin-page.php" class="nav-link">Home</a></li>
+    <li class="nav-item"><a href="admin-request.php" class="nav-link">Lab Request</a></li>
+    <li class="nav-item active"><a href="admin-results.php" class="nav-link">Lab Results</a></li>
+    <li class="nav-item"> <a href="php_action/logout.php" class="nav-link">Log out</a></li>
   </ul>
 </div>
 </div>
@@ -79,24 +92,6 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
-            <td>
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">View</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">View</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
             <td>
               <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">View</button>
             </td>

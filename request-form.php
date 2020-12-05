@@ -1,3 +1,11 @@
+<?php
+include("php_action/db_config.php");
+include("php_action/add/request_form.php");
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +44,7 @@
  <div class="collapse navbar-collapse" id="ftco-nav">
   <ul class="navbar-nav  m-lg-auto">
     <li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>
-    <li class="nav-item " style="padding-left: 30px;"><a href="patient-result.html" class="nav-link">Lab Results</a></li>
+    <li class="nav-item " style="padding-left: 30px;"><a href="patient-result.php" class="nav-link">Lab Results</a></li>
   </ul>
 </div>
 </div>
@@ -52,55 +60,9 @@
         <div class=" heading-section ftco-animate" >
             <center><h2 class="mb-3" style="padding-top: 50px;">Laboratory Request <span>Form</span></h2></center>
         </div>
-    <form action="" method="get" class="ftco-animate">
-        <div class="form-group row">
-            <div class="col-6">
-                <fieldset>
-                    <legend style="margin-bottom: 4px;">Patient Details:</legend>
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="name" style="padding-top: 10px;" >Name:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" style="width: 100%;" class="form-control" placeholder="First Name" name="name" id="name">
-                        </div>
-                        <div class="col-4">
-                            <label for="address" style="padding-top: 10px;" >Current Address:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" style="width: 100%;" class="form-control" placeholder="House #, Lot # - Block #, Street" name="address" id="address">
-                        </div>
-                        <div class="col-4">
-                            <label for="number" style="padding-top: 10px;" >Contact Number:</label>
-                        </div>
-                        <div class="col-8">
-                            <input type="tel" class="form-control" placeholder="Cellphone or Telephone #" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}">
-                        </div>
-                        <div class="col-4">
-                            <label for="dob" style="padding-top: 10px;" >Date Of Birth:</label>
-                        </div>
-                        <div class="col-8">
-                             <input type="date" style="width: 100%;" class="form-control" name="dob" id="dob">
-                        </div>
-                        <div class="col-4">
-                            <label for="gender" style="padding-top: 10px;" >Gender:</label>
-                        </div>
-                        <div class="col-8" style="padding-top: 10px;" >
-                            <label for="male" style=" padding-right:10px;" >Male </label>
-                                <input type="checkbox" class="gender" value="male" name="male" id="male">
-                            <label for="female" style="padding-left: 20px; padding-right:10px;">Female</label>
-                                <input type="checkbox" class="gender" value="female" name="female" id="female">
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-            <div class="col-6" style="margin-top: 47px;">
-                <input type="text" class="form-control" name="Lname" id="Lname" placeholder="Last Name">
-                <input type="text" class="form-control" name="City" id="City" placeholder="City">
-                <input type="text" class="form-control" name="State" id="State" placeholder="State/Province">
-                <input type="text" class="form-control" name="Zipcode" id="Zipcode" placeholder="Zipcode">
-                <input type="email" class="form-control" name="Email" id="Email"  placeholder="E-mail Address">
-            </div>
+    <form action="" method="POST" class="ftco-animate">
+        <div class="">
+            <legend> Please Fill-up the form thoroughly!</legend>
         </div>
         <div class="form-group">
             <fieldset>
@@ -121,9 +83,9 @@
                         </div>
                         <div class="col-8" style="padding-top: 10px; padding-left: 25px;" >
                             <label for="fasting" style=" padding-right:10px;">Fasting </label>
-                                <input type="checkbox" value="fasting" class="fasting" name="fasting" id="fasting">
+                                <input type="checkbox" value="1" class="fasting" name="fasting" id="fasting">
                             <label for="non-fasting" style="padding-left: 20px; padding-right:10px;">Non-fasting</label>
-                                <input type="checkbox" value="non-fasting" class="fasting" name="noo-fasting" id="non-fasting">
+                                <input type="checkbox" value="1" class="fasting" name="non-fasting" id="non-fasting">
                         </div>
                         
                     </div>
@@ -151,21 +113,21 @@
                     <div class="" style="padding-top: 15px;">
                         <div class="col-12">
                             <label for="" style="padding-left: 100px;"></label>
-                            <input type="checkbox" value="" class="test" name="blood" id="blood">
+                            <input type="checkbox" value="1" class="test" name="blood" id="blood">
                                 <label for="blood" style="padding-right: 30px; padding-left: 10px;">Blood</label>
-                            <input type="checkbox" class="test" name="urine" id="urine">
+                            <input type="checkbox" value="1" class="test" name="urine" id="urine">
                                 <label for="urine" style="padding-right: 30px; padding-left: 10px;">Urine</label>
-                            <input type="checkbox" class="test" name="swab" id="swasb">
+                            <input type="checkbox" value="1" class="test" name="swab" id="swasb">
                                 <label for="swab" style="padding-right: 30px; padding-left: 10px;">Swab</label>
-                            <input type="checkbox" class="test" name="tissue" id="tissue">
+                            <input type="checkbox" value="1" class="test" name="tissue" id="tissue">
                                 <label for="tissue" style="padding-right: 30px; padding-left: 10px;">Tissue</label>
-                            <input type="checkbox" class="test" name="faeces" id="faeces">
+                            <input type="checkbox" value="1" class="test" name="faeces" id="faeces">
                                 <label for="faeces" style="padding-right: 30px; padding-left: 10px;">Faeces</label>
-                            <input type="checkbox" class="test" name="sputum" id="sputum">
+                            <input type="checkbox" value="1" class="test" name="sputum" id="sputum">
                                 <label for="sputum" style="padding-right: 30px; padding-left: 10px;"> Sputum</label>
-                            <input type="checkbox" class="test" name="fluids" id="fluids">
+                            <input type="checkbox" value="1" class="test" name="fluids" id="fluids">
                                 <label for="fluids" style="padding-right: 30px; padding-left: 10px;">Fluids</label>
-                            <input type="checkbox" class="test" name="cytology" id="cytology">
+                            <input type="checkbox" value="1" class="test" name="cytology" id="cytology">
                                 <label for="cytology" style=" padding-left: 10px;">Cytology</label>
                         </div>
                         <div class="col-12 row" style="padding-left:180px;">
@@ -232,105 +194,105 @@
                         <div class="media-body pl-md-4">
                             <legend class="heading mb-3">Profile Test</legend>
                             <div class="row row-cols-lg-4">
-                              <input type="checkbox" name="g2000" id="g2000" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="g2000" id="g2000" style="margin-top: 0px;">
                                 <label for="g2000" style="margin-top: 6px;">G2000</label>
-                              <input type="checkbox" name="g2000x" id="g2000x" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="g2000x" id="g2000x" style="margin-top: 0px;">
                                 <label for="g2000x" style="margin-top: 6px;">G2000X</label>
-                              <input type="checkbox" name="gt9" id="gt9" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="gt9" id="gt9" style="margin-top: 0px;">
                                 <label for="gt9" style="margin-top: 6px;">GT9</label>
-                              <input type="checkbox" name="gti" id="gti" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="gti" id="gti" style="margin-top: 0px;">
                                 <label for="gti" style="margin-top: 6px;">GTI</label>
-                              <input type="checkbox" name="neo" id="neo" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="neo" id="neo" style="margin-top: 0px;">
                                 <label for="neo" style="margin-top: 6px;">NEO</label>
-                              <input type="checkbox" name="es" id="es" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="es" id="es" style="margin-top: 0px;">
                                 <label for="es" style="margin-top: 6px;">ES</label>
-                              <input type="checkbox" name="hb3" id="hb3" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="hb3" id="hb3" style="margin-top: 0px;">
                                 <label for="hb3" style="margin-top: 6px;">HB3</label>
-                              <input type="checkbox" name="dfs" id="dfs" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="dfs" id="dfs" style="margin-top: 0px;">
                                 <label for="dfs" style="margin-top: 6px;">DFS</label>
-                              <input type="checkbox" name="lft" id="lft" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="lft" id="lft" style="margin-top: 0px;">
                                 <label for="lft" style="margin-top: 6px;">LFT</label>
-                              <input type="checkbox" name="tft" id="tft" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="tft" id="tft" style="margin-top: 0px;">
                                 <label for="tft" style="margin-top: 6px;">TFT</label>
-                              <input type="checkbox" name="mac" id="mac" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="mac" id="mac" style="margin-top: 0px;">
                                 <label for="mac" style="margin-top: 6px;">MAC</label>
-                              <input type="checkbox" name="lgl" id="lgl" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="lgl" id="lgl" style="margin-top: 0px;">
                                 <label for="lgl" style="margin-top: 6px;">LGL</label>
-                              <input type="checkbox" name="lip" id="lip" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="lip" id="lip" style="margin-top: 0px;">
                                 <label for="lip" style="margin-top: 6px;">LIP</label>
                             </div>
                         </div>
                         <div class="media-body pl-md-4">
                             <legend class="heading mb-3">Biochemistry</legend>
                             <div class="row row-cols-lg-4">
-                              <input type="checkbox" name="cea" id="cea" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="cea" id="cea" style="margin-top: 0px;">
                                 <label for="cea" style="margin-top: 6px;">CEA</label>
-                              <input type="checkbox" name="ca1" id="ca1" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="ca1" id="ca1" style="margin-top: 0px;">
                                 <label for="ca1" style="margin-top: 6px;">CA1</label>
-                              <input type="checkbox" name="ca5" id="ca5" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="ca5" id="ca5" style="margin-top: 0px;">
                                 <label for="ca5" style="margin-top: 6px;">CA5</label>
-                              <input type="checkbox" name="ca9" id="ca9" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="ca9" id="ca9" style="margin-top: 0px;">
                                 <label for="ca9" style="margin-top: 6px;">CA9</label>
-                              <input type="checkbox" name="psa" id="psa" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="psa" id="psa" style="margin-top: 0px;">
                                 <label for="psa" style="margin-top: 6px;">PSA</label>
-                              <input type="checkbox" name="afp" id="afp" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="afp" id="afp" style="margin-top: 0px;">
                                 <label for="afp" style="margin-top: 6px;">AFP</label>
-                              <input type="checkbox" name="glucose" id="glucose" >
+                              <input type="checkbox" value="1" name="glucose" id="glucose" >
                                 <label for="glucose" style="margin-top: 19px;">Glucose</label>
-                              <input type="checkbox" name="hiv12" id="hiv12" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="hiv12" id="hiv12" style="margin-top: 0px;">
                                 <label for="hiv12">HIV 1&2</label>
-                              <input type="checkbox" name="hba1c" id="hba1c" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="hba1c" id="hba1c" style="margin-top: 0px;">
                                 <label for="hba1c" style="margin-top: 6px;">HbA1c</label>
-                              <input type="checkbox" name="hbsag" id="hbsag" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="hbsag" id="hbsag" style="margin-top: 0px;">
                                 <label for="hbsag" style="margin-top: 6px;">HBsAg</label>
-                              <input type="checkbox" name="hpylori" id="hpylori" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="hpylori" id="hpylori" style="margin-top: 0px;">
                                 <label for="hpylori">H. pylori</label>
-                              <input type="checkbox" name="uricacid" id="uricacid" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="uricacid" id="uricacid" style="margin-top: 0px;">
                                 <label for="uricacid">Uric Acid</label>
-                              <input type="checkbox" name="freet4" id="freet4" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="freet4" id="freet4" style="margin-top: 0px;">
                                 <label for="freet4" style="margin-top: 6px;">Free T4</label>
                             </div>
                         </div>
                         <div class="media-body pl-md-4">
                             <legend class="heading mb-3">Hematology</legend>
                             <div class="row row-cols-lg-4">
-                              <input type="checkbox" name="fbe" id="fbe" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="fbe" id="fbe" style="margin-top: 0px;">
                                 <label for="fbe">FBE (incl. ESR)</label>
-                              <input type="checkbox" name="fbc" id="fbc">
+                              <input type="checkbox" value="1" name="fbc" id="fbc">
                                 <label for="fbc" style="margin-top: 34px;">FBC</label>
-                              <input type="checkbox" name="hb" id="hb" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="hb" id="hb" style="margin-top: 0px;">
                                 <label for="hb" style="margin-top: 6px;">Hb</label>
-                              <input type="checkbox" name="twdc" id="twdc" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="twdc" id="twdc" style="margin-top: 0px;">
                                 <label for="twdc" style="margin-top: 6px;">TWDC</label>
-                              <input type="checkbox" name="platelets" id="platelets">
+                              <input type="checkbox" value="1" name="platelets" id="platelets">
                                 <label for="platelets" style="margin-top: 18px;">Platelets</label>
-                              <input type="checkbox" name="aborh" id="aborh" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="aborh" id="aborh" style="margin-top: 0px;">
                                 <label for="aborh">ABO & RH (D)</label>
-                              <input type="checkbox" name="malaria" id="malaria" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="malaria" id="malaria" style="margin-top: 0px;">
                                 <label for="malaria" style="margin-top: 6px;">Malaria Parasites</label>
                             </div>
                         </div>
                         <div class="media-body pl-md-4">
                             <legend class="heading mb-3">Microbiology</legend>
                             <div class="row row-cols-lg-4">
-                              <input type="checkbox" name="urine-feme" id="urine-feme" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="urine-feme" id="urine-feme" style="margin-top: 0px;">
                                 <label for="urine-feme">Urine-FEME</label>
-                              <input type="checkbox" name="rpr" id="rpr" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="rpr" id="rpr" style="margin-top: 0px;">
                                 <label for="rpr">RPR (VDRL)</label>
-                              <input type="checkbox" name="microscopy" id="microscopy">
+                              <input type="checkbox" value="1" name="microscopy" id="microscopy">
                                 <label for="microscopy" style="margin-top: 17px;">Culture/ Sensitivity/ Microscopy</label>
-                              <input type="checkbox" name="afbso" id="afbso" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="afbso" id="afbso" style="margin-top: 0px;">
                                 <label for="afbso">AFB (ZN) Smear Only</label>
-                              <input type="checkbox" name="afbsc" id="afbsc" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="afbsc" id="afbsc" style="margin-top: 0px;">
                                 <label for="afbsc">AFB Smear & Culture</label>
                             </div>
                         </div>
                         <div class="media-body pl-md-4">
                             <legend class="heading mb-3">Anatomical Pathology</legend>
                             <div class="row row-cols-2">
-                              <input type="checkbox" name="histology" id="histology" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="histology" id="histology" style="margin-top: 0px;">
                                 <label for="histology" style="margin-top: 6px;">Histology</label>
-                              <input type="checkbox" name="nongynae" id="nongynae" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="nongynae" id="nongynae" style="margin-top: 0px;">
                                 <label for="nongynae">Non-Gynae/FNA</label>
                             </div>
                               <label for="site">Site</label>
@@ -349,13 +311,13 @@
                         <div class="media-body pl-md-4">
                             <legend class="heading mb-3">Cervical Cytology</legend>
                             <div class="row row-cols-lg-4">
-                              <input type="checkbox" name="papsmear" id="papsmear" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="papsmear" id="papsmear" style="margin-top: 0px;">
                                 <label for="papsmear"style="margin-top: 6px;">Pap smear</label>
-                              <input type="checkbox" name="normal1" id="normal1" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="normal1" id="normal1" style="margin-top: 0px;">
                                 <label for="normal1"style="margin-top: 6px;">Normal</label>
-                              <input type="checkbox" name="post-mono" id="post-mono" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="post-mono" id="post-mono" style="margin-top: 0px;">
                                 <label for="post-mono"style="margin-top: 4px;">Post-Mono Blood</label>
-                              <input type="checkbox" name="susplesion" id="susplesion">
+                              <input type="checkbox" value="1" name="susplesion" id="susplesion">
                                 <label for="susplesion" style="margin-top: 18px;">Sups Lesion</label>
                             </div>
                             <div class="col-12">
@@ -371,15 +333,15 @@
                             </div>
                             <label for="site"style="margin-top: 10px;">Site</label>
                                 <div class="row row-cols-lg-4">
-                              <input type="checkbox" name="cervix" id="cervix" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="cervix" id="cervix" style="margin-top: 0px;">
                                 <label for="cervix"style="margin-top: 6px;">Cervix</label>
-                              <input type="checkbox" name="vault" id="vault" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="vault" id="vault" style="margin-top: 0px;">
                                 <label for="vault"style="margin-top: 6px;">Vault</label>
-                              <input type="checkbox" name="endocx" id="endocx" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="endocx" id="endocx" style="margin-top: 0px;">
                                 <label for="endocx"style="margin-top: 6px;">Endocx</label>
-                              <input type="checkbox" name="postfornix" id="postfornix" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="postfornix" id="postfornix" style="margin-top: 0px;">
                                 <label for="postfornix"style="margin-top: 6px;">Post Fornix</label>
-                              <input type="checkbox" name="latvagwall" id="latvagwall" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="latvagwall" id="latvagwall" style="margin-top: 0px;">
                                 <label for="latvagwall"style="margin-top: 6px;">Lat. Vag. Wall</label>
                               </div>
                                 <div class="col-12">
@@ -403,9 +365,9 @@
                                         </div>
                                     </div>
                                 </div>
-                              <input type="checkbox" name="post-meno" id="post-meno" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="post-meno" id="post-meno" style="margin-top: 0px;">
                                 <label for="post-meno">Post-Menopausal</label></br>
-                              <input type="checkbox" name="hrt" id="hrt" style="margin-top: 0px;">
+                              <input type="checkbox" value="1" name="hrt" id="hrt" style="margin-top: 0px;">
                                 <label for="hrt">HRT</label>
 
                             <div class="col-12">
@@ -450,7 +412,7 @@
             </fieldset>
         </div>
         <div class=" align-self-lg-center appointment-form" style="padding: 20px;">
-            <center><button type="submit" class=" btn btn-primary btn-lg px-lg-5 py-lg-4">Submit</button></center>
+            <center><button type="submit" name="submit" class=" btn btn-primary btn-lg px-lg-5 py-lg-4">Submit</button></center>
             
         </div>
             <center><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Registration confirmation Modal</button>

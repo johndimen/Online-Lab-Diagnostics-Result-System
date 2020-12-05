@@ -1,3 +1,11 @@
+<?php
+
+include("php_action/db_config.php");
+include("php_action/add/covid-patient.php");
+include("php_action/retrieve/covid-patient.php");
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -53,43 +61,74 @@
         <div class=" heading-section ftco-animate" >
             <center><h2 class="mb-3"style="padding-top: 50px;">Covid-19 Request <span>Form</span></h2></center>
         </div>
-        <form action="">  
+        <form method="POST" id="covid_insert">  
             <div class="ftco-animate" style="padding-bottom: 30px;">
                 <fieldset>
-                    <legend> Please Fill-up the form truthfully!</legend>
-
-                    <div class="col-4" style="margin-bottom: 20px;">
-                        <label for="covidDOB">What is your Date of Birth:</label>
-                        <input type="date" class="form-control" name="covidDOB" id="covidDOB">
-                    </div>
-                    <div class="col-12">
-                        <label>Please, Enter your Personal details</label>
-                        <div class="row">
-                            <div class="col-6">
-                                <input type="text" class="form-control" name="Fname" id="Fname" placeholder="First Name">
-                                <input type="text" class="form-control" name="Lname" id="Lname" placeholder="Last Name">
-                                <input type="text" class="form-control" name="Address1" id="Address1" placeholder="Current Address">
-                                <input type="text" class="form-control" name="City" id="City" placeholder="City">
+                    <h3 align="center">Covid-19 Information Sheet</h3>
+                    <label for="">Patient No.: <?php echo $result['Patient_ID']?></label>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-6">
+                            <div class="" style="margin-top: 20px;">
+                                <label for="deceases">Do you suffer from any deceases? if yes, please enumerate</label>
+                                <div class="">
+                                    <input placeholder="Cardiovascular, Diabetes, Asthma, etc." type="text" class="form-control" name="deceases" id="deceases">
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <input type="text" class="form-control" name="State" id="State" placeholder="State/Province">
-                                <input type="text" class="form-control" name="Zipcode" id="Zipcode" placeholder="Zipcode">
-                                <input type="email" class="form-control" name="Email" id="Email"  placeholder="E-mail Address">
-                                <input type="tel" class="form-control" name="Contact" id="Contact" placeholder="Contact Number">
+                            <div class=""style="margin-top: 20px;">
+                                <label for="travel">Do you have a travel history to any countries? if yes, please enumerate</label>
+                                <div class="">
+                                    <input placeholder="China, US, UK, etc." type="text" class="form-control" name="travel" id="travel">
+                                </div>
+                            </div>
+                            <div class=""style="margin-top: 20px;">
+                                <label for="contact">Approximately, how many people have you come in contact with in past 15 days?</label>
+                                <div class="">
+                                    <input placeholder="# of contacted people" type="text" class="form-control" name="contact" id="contact">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class=""style="margin-top: 20px;">
+                                <label for="preggy">Are you pregnant? If yes, select the number of weeks.</label>
+                                <div class="">
+                                    <input placeholder="# of weeks" type="text" class="form-control" name="preggy" id="preggy">
+                                </div>
+                            </div>
+                            <div class=""style="margin-top: 20px;">
+                                <label for="tested">Have you been tested at airport or hospital?</label>
+                                <div class="">
+                                    <select class="form-control" name="tested" id="tested">
+                                        <option value="">Select yes/no</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="" style="margin-top: 20px;">
-                        <label for="">Whats is your gender?</label>
-                        <div class="row col-5">
-                            <input type="checkbox" class="gender1" value="Male" id="male" name="male">
-                                <label for="male" style="margin-right: 20px; margin-left: 10px; padding-top: 7px;" >Male</label>
-                            <input type="checkbox" class="gender1" value="Female" id="female" name="female">
-                                <label for="female" style="margin-right: 20px; margin-left: 10px; padding-top: 7px;" >Female</label>
-                            <input type="checkbox" class="gender1" value="Not to say" id="nottosay" name="nottosay">
-                                <label for="nottosay" style="margin-right: 10px; margin-left: 10px; padding-top: 7px;" >Prefer not to say</label>
+                        <label for="">Do you experience any other difficulties?</label>
+                        <div class="">
+                            <textarea class="form-control" name="difficulties" id="difficulties" width="100%" rows="3"></textarea>
                         </div>
                     </div>
+                </fieldset>
+                <div class="appointment-form" style="margin-top: 20px;">
+                    <center>
+                        <button type="submit" name="submit1" class="btn btn-secondary">Submit Request</button>
+                        <button type="reset" class="btn btn-outline-info">Reset Fields</button>
+                    </center>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!--
+<div class="">
+    <label for=""></label>
+    <input type="text" name="" id="">
+
+    
                     <div class="" style="margin-top: 20px;">
                         <label for="">Do you suffer from any of the below diceases?</label>
                         <div class="">
@@ -165,27 +204,6 @@
                                 <label for="tested" style="margin-right: 10px; margin-left: 10px; padding-top: 7px;">No</label>
                         </div>
                     </div>
-                    <div class="" style="margin-top: 20px;">
-                        <label for="">Do you experience any other difficulties?</label>
-                        <div class="">
-                            <textarea class="form-control" name="difficulties" id="difficulties" width="100%" rows="5"></textarea>
-                        </div>
-                    </div>
-                </fieldset>
-                <div class="appointment-form" style="margin-top: 20px;">
-                    <center>
-                        <button type="submit" class="btn btn-secondary">Submit Request</button>
-                        <button type="reset" class="btn btn-outline-info">Reset Request</button>
-                    </center>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
-<!--
-<div class="">
-    <label for=""></label>
-    <input type="text" name="" id="">
 </div>-->
 
 <section class="ftco-section ftco-animate img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
@@ -227,8 +245,8 @@
 <script src="js/scrollax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="js/google-map.js"></script>
-
 <script src="js/main.js"></script>
 
+  
 </body>
 </html>
