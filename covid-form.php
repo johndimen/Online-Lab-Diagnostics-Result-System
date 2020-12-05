@@ -65,7 +65,11 @@ include("php_action/retrieve/covid-patient.php");
             <div class="ftco-animate" style="padding-bottom: 30px;">
                 <fieldset>
                     <h3 align="center">Covid-19 Information Sheet</h3>
-                    <label for="">Patient No.: <?php echo $result['Patient_ID']?></label>
+                    <label for="">Patient No.: 
+                        <?php 
+                            echo $result['Patient_ID'];
+                            ?>
+                    </label>
                     <div class="row" style="margin-top: 20px;">
                         <div class="col-6">
                             <div class="" style="margin-top: 20px;">
