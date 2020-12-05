@@ -1,6 +1,13 @@
 <?php
 include("php_action/db_config.php");
-include("php_action/add/lab-patient_info.php");
+include("php_action/add/lab-patient.php");
+
+$randpatient = rand(0,999999999);
+
+$day = date('D');
+$day1 = date('d');
+
+$covidpatient =  "CP-$randpatient-$day-$day1"; 
 
 
 ?>
@@ -63,8 +70,8 @@ include("php_action/add/lab-patient_info.php");
         </div>
     <form action="" method="post" class="ftco-animate">
         <fieldset>
-            <center><legend></legend></center>
-            <div class="">
+            <input type="text"  name="patientid" value="<?php echo $covidpatient?>">
+            <div class="" style="padding-bottom:20px;">
                     <div class="row">
                         <div class="col-6" style="margin-bottom: 20px;">
                             <label for="covidDOB">What is your Date of Birth:</label>
@@ -98,6 +105,354 @@ include("php_action/add/lab-patient_info.php");
                             </div>
                         </div>
                     </div>
+            </div>
+            <div class="">
+                <h3 align= "center">Laboratory Information Sheet</h3>
+            <fieldset>
+                <legend>Sample Details:</legend>
+                <div class="row">
+                    <div class="row col-6">
+                        <div class="col-4">
+                            <label for="urgency" style="padding-top: 10px;" >Urgency:</label>
+                        </div>
+                        <div class="col-8" style="padding-top: 10px; padding-left: 25px;" >
+                            <label for="normal" style=" padding-right:10px;" >Normal </label>
+                                <input type="checkbox" class="urgency" value="normal" name="normal" id="normal">
+                            <label for="normal" style="padding-left: 20px; padding-right:10px;">Urgent</label>
+                                <input type="checkbox" class="urgency" value="urgent" name="urgent" id="urgent">
+                        </div>
+                        <div class="col-4">
+                            <label for="fasting" style="padding-top: 10px;" ></label>
+                        </div>
+                        <div class="col-8" style="padding-top: 10px; padding-left: 25px;" >
+                            <label for="fasting" style=" padding-right:10px;">Fasting </label>
+                                <input type="checkbox" value="1" class="fasting" name="fasting" id="fasting">
+                            <label for="non-fasting" style="padding-left: 20px; padding-right:10px;">Non-fasting</label>
+                                <input type="checkbox" value="1" class="fasting" name="non-fasting" id="non-fasting">
+                        </div>
+                        
+                    </div>
+                    <div class="col-6">
+                        <fieldset>
+                            <h5 style="color: grey;">Sample taken from patient:</h5>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label for="sampledate" style="padding-top: 10px;">Date:</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="date" class="form-control" name="sampledate" id="sampledate">
+                                </div>
+                                <div class="col-4">
+                                    <label for="sampletime" style="padding-top: 10px;">Time:</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="time" class="form-control" name="sampletime" id="sampletime">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <fieldset>
+                    <div class="" style="padding-top: 15px;">
+                        <div class="col-12">
+                            <label for="" style="padding-left: 100px;"></label>
+                            <input type="checkbox" value="1" class="test" name="blood" id="blood">
+                                <label for="blood" style="padding-right: 30px; padding-left: 10px;">Blood</label>
+                            <input type="checkbox" value="1" class="test" name="urine" id="urine">
+                                <label for="urine" style="padding-right: 30px; padding-left: 10px;">Urine</label>
+                            <input type="checkbox" value="1" class="test" name="swab" id="swasb">
+                                <label for="swab" style="padding-right: 30px; padding-left: 10px;">Swab</label>
+                            <input type="checkbox" value="1" class="test" name="tissue" id="tissue">
+                                <label for="tissue" style="padding-right: 30px; padding-left: 10px;">Tissue</label>
+                            <input type="checkbox" value="1" class="test" name="faeces" id="faeces">
+                                <label for="faeces" style="padding-right: 30px; padding-left: 10px;">Faeces</label>
+                            <input type="checkbox" value="1" class="test" name="sputum" id="sputum">
+                                <label for="sputum" style="padding-right: 30px; padding-left: 10px;"> Sputum</label>
+                            <input type="checkbox" value="1" class="test" name="fluids" id="fluids">
+                                <label for="fluids" style="padding-right: 30px; padding-left: 10px;">Fluids</label>
+                            <input type="checkbox" value="1" class="test" name="cytology" id="cytology">
+                                <label for="cytology" style=" padding-left: 10px;">Cytology</label>
+                        </div>
+                        <div class="col-12 row" style="padding-left:180px;">
+                            <input type="checkbox" name="otherx" id="otherx">
+                                <label for="otherx" style="padding-top: 10px; padding-left: 10px;"> Other, namely:</label>
+                            <div class="col-8">
+                                <input type="text" class="form-control" disabled="disabled" name="otherxtxt" id="otherxtxt">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="">
+                    <fieldset>
+                        <legend>Relevant Clinical Information:</legend>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class=" row">
+                                    <div class="col-4">
+                                        <label for="drugtherapy" style="padding-top: 10px;">Drug Therapy:</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" name="drugtherapy" id="drugtherapy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class=" row">
+                                    <div class="col-4">
+                                        <label for="lastdose" style="padding-top: 10px;">Last Dose:</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" name="lastdose" id="lastdose">
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="drugdate" style="padding-top: 10px;">Date:</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="date" class="form-control" name="drugdate" id="drugdate">
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="drugtime" style="padding-top: 10px;">Time:</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="time" class="form-control" name="drugtime" id="drugtime">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row" style="padding-top: 10px;">
+                                <div class="col-3">
+                                    <label for="orci" style="padding: top 10px;">Other Relevant <br> Clinical Information:</label>
+                                </div>
+                                <div class="col-9">
+                                    <textarea name="orci" id="orci" class="form-control" cols="100" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <fieldset>
+                    <legend>Examination Requested:</legend>
+                    <div class="row row-cols-lg-5">
+                        <div class="media-body pl-md-4">
+                            <legend class="heading mb-3">Profile Test</legend>
+                            <div class="row row-cols-lg-4">
+                              <input type="checkbox" value="1" name="g2000" id="g2000" style="margin-top: 0px;">
+                                <label for="g2000" style="margin-top: 6px;">G2000</label>
+                              <input type="checkbox" value="1" name="g2000x" id="g2000x" style="margin-top: 0px;">
+                                <label for="g2000x" style="margin-top: 6px;">G2000X</label>
+                              <input type="checkbox" value="1" name="gt9" id="gt9" style="margin-top: 0px;">
+                                <label for="gt9" style="margin-top: 6px;">GT9</label>
+                              <input type="checkbox" value="1" name="gti" id="gti" style="margin-top: 0px;">
+                                <label for="gti" style="margin-top: 6px;">GTI</label>
+                              <input type="checkbox" value="1" name="neo" id="neo" style="margin-top: 0px;">
+                                <label for="neo" style="margin-top: 6px;">NEO</label>
+                              <input type="checkbox" value="1" name="es" id="es" style="margin-top: 0px;">
+                                <label for="es" style="margin-top: 6px;">ES</label>
+                              <input type="checkbox" value="1" name="hb3" id="hb3" style="margin-top: 0px;">
+                                <label for="hb3" style="margin-top: 6px;">HB3</label>
+                              <input type="checkbox" value="1" name="dfs" id="dfs" style="margin-top: 0px;">
+                                <label for="dfs" style="margin-top: 6px;">DFS</label>
+                              <input type="checkbox" value="1" name="lft" id="lft" style="margin-top: 0px;">
+                                <label for="lft" style="margin-top: 6px;">LFT</label>
+                              <input type="checkbox" value="1" name="tft" id="tft" style="margin-top: 0px;">
+                                <label for="tft" style="margin-top: 6px;">TFT</label>
+                              <input type="checkbox" value="1" name="mac" id="mac" style="margin-top: 0px;">
+                                <label for="mac" style="margin-top: 6px;">MAC</label>
+                              <input type="checkbox" value="1" name="lgl" id="lgl" style="margin-top: 0px;">
+                                <label for="lgl" style="margin-top: 6px;">LGL</label>
+                              <input type="checkbox" value="1" name="lip" id="lip" style="margin-top: 0px;">
+                                <label for="lip" style="margin-top: 6px;">LIP</label>
+                            </div>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <legend class="heading mb-3">Biochemistry</legend>
+                            <div class="row row-cols-lg-4">
+                              <input type="checkbox" value="1" name="cea" id="cea" style="margin-top: 0px;">
+                                <label for="cea" style="margin-top: 6px;">CEA</label>
+                              <input type="checkbox" value="1" name="ca1" id="ca1" style="margin-top: 0px;">
+                                <label for="ca1" style="margin-top: 6px;">CA1</label>
+                              <input type="checkbox" value="1" name="ca5" id="ca5" style="margin-top: 0px;">
+                                <label for="ca5" style="margin-top: 6px;">CA5</label>
+                              <input type="checkbox" value="1" name="ca9" id="ca9" style="margin-top: 0px;">
+                                <label for="ca9" style="margin-top: 6px;">CA9</label>
+                              <input type="checkbox" value="1" name="psa" id="psa" style="margin-top: 0px;">
+                                <label for="psa" style="margin-top: 6px;">PSA</label>
+                              <input type="checkbox" value="1" name="afp" id="afp" style="margin-top: 0px;">
+                                <label for="afp" style="margin-top: 6px;">AFP</label>
+                              <input type="checkbox" value="1" name="glucose" id="glucose" >
+                                <label for="glucose" style="margin-top: 19px;">Glucose</label>
+                              <input type="checkbox" value="1" name="hiv12" id="hiv12" style="margin-top: 0px;">
+                                <label for="hiv12">HIV 1&2</label>
+                              <input type="checkbox" value="1" name="hba1c" id="hba1c" style="margin-top: 0px;">
+                                <label for="hba1c" style="margin-top: 6px;">HbA1c</label>
+                              <input type="checkbox" value="1" name="hbsag" id="hbsag" style="margin-top: 0px;">
+                                <label for="hbsag" style="margin-top: 6px;">HBsAg</label>
+                              <input type="checkbox" value="1" name="hpylori" id="hpylori" style="margin-top: 0px;">
+                                <label for="hpylori">H. pylori</label>
+                              <input type="checkbox" value="1" name="uricacid" id="uricacid" style="margin-top: 0px;">
+                                <label for="uricacid">Uric Acid</label>
+                              <input type="checkbox" value="1" name="freet4" id="freet4" style="margin-top: 0px;">
+                                <label for="freet4" style="margin-top: 6px;">Free T4</label>
+                            </div>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <legend class="heading mb-3">Hematology</legend>
+                            <div class="row row-cols-lg-4">
+                              <input type="checkbox" value="1" name="fbe" id="fbe" style="margin-top: 0px;">
+                                <label for="fbe">FBE (incl. ESR)</label>
+                              <input type="checkbox" value="1" name="fbc" id="fbc">
+                                <label for="fbc" style="margin-top: 34px;">FBC</label>
+                              <input type="checkbox" value="1" name="hb" id="hb" style="margin-top: 0px;">
+                                <label for="hb" style="margin-top: 6px;">Hb</label>
+                              <input type="checkbox" value="1" name="twdc" id="twdc" style="margin-top: 0px;">
+                                <label for="twdc" style="margin-top: 6px;">TWDC</label>
+                              <input type="checkbox" value="1" name="platelets" id="platelets">
+                                <label for="platelets" style="margin-top: 18px;">Platelets</label>
+                              <input type="checkbox" value="1" name="aborh" id="aborh" style="margin-top: 0px;">
+                                <label for="aborh">ABO & RH (D)</label>
+                              <input type="checkbox" value="1" name="malaria" id="malaria" style="margin-top: 0px;">
+                                <label for="malaria" style="margin-top: 6px;">Malaria Parasites</label>
+                            </div>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <legend class="heading mb-3">Microbiology</legend>
+                            <div class="row row-cols-lg-4">
+                              <input type="checkbox" value="1" name="urine-feme" id="urine-feme" style="margin-top: 0px;">
+                                <label for="urine-feme">Urine-FEME</label>
+                              <input type="checkbox" value="1" name="rpr" id="rpr" style="margin-top: 0px;">
+                                <label for="rpr">RPR (VDRL)</label>
+                              <input type="checkbox" value="1" name="microscopy" id="microscopy">
+                                <label for="microscopy" style="margin-top: 17px;">Culture/ Sensitivity/ Microscopy</label>
+                              <input type="checkbox" value="1" name="afbso" id="afbso" style="margin-top: 0px;">
+                                <label for="afbso">AFB (ZN) Smear Only</label>
+                              <input type="checkbox" value="1" name="afbsc" id="afbsc" style="margin-top: 0px;">
+                                <label for="afbsc">AFB Smear & Culture</label>
+                            </div>
+                        </div>
+                        <div class="media-body pl-md-4">
+                            <legend class="heading mb-3">Anatomical Pathology</legend>
+                            <div class="row row-cols-2">
+                              <input type="checkbox" value="1" name="histology" id="histology" style="margin-top: 0px;">
+                                <label for="histology" style="margin-top: 6px;">Histology</label>
+                              <input type="checkbox" value="1" name="nongynae" id="nongynae" style="margin-top: 0px;">
+                                <label for="nongynae">Non-Gynae/FNA</label>
+                            </div>
+                              <label for="site">Site</label>
+                                <input type="text" class="form-control" name="site" id="site">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="col-12 row">
+                    <div class="col-6">
+                        <fieldset>
+                            <legend>Additional Test:</legend>
+                            <textarea name="additonaltest" class="form-control" id="additionaltest" cols="49" rows="23"></textarea>
+                        </fieldset>
+                    </div>
+                    <div class="col-6">
+                        <div class="media-body pl-md-4">
+                            <legend class="heading mb-3">Cervical Cytology</legend>
+                            <div class="row row-cols-lg-4">
+                              <input type="checkbox" value="1" name="papsmear" id="papsmear" style="margin-top: 0px;">
+                                <label for="papsmear"style="margin-top: 6px;">Pap smear</label>
+                              <input type="checkbox" value="1" name="normal1" id="normal1" style="margin-top: 0px;">
+                                <label for="normal1"style="margin-top: 6px;">Normal</label>
+                              <input type="checkbox" value="1" name="post-mono" id="post-mono" style="margin-top: 0px;">
+                                <label for="post-mono"style="margin-top: 4px;">Post-Mono Blood</label>
+                              <input type="checkbox" value="1" name="susplesion" id="susplesion">
+                                <label for="susplesion" style="margin-top: 18px;">Sups Lesion</label>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="checkbox" name="others1" id="others1">
+                                        <label for="others1txt"style="margin-top: 6px;">Other:</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" name="others1txt" class="form-control" id="others1txt" disabled="disabled" placeholder="Specify">
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="site"style="margin-top: 10px;">Site</label>
+                                <div class="row row-cols-lg-4">
+                              <input type="checkbox" value="1" name="cervix" id="cervix" style="margin-top: 0px;">
+                                <label for="cervix"style="margin-top: 6px;">Cervix</label>
+                              <input type="checkbox" value="1" name="vault" id="vault" style="margin-top: 0px;">
+                                <label for="vault"style="margin-top: 6px;">Vault</label>
+                              <input type="checkbox" value="1" name="endocx" id="endocx" style="margin-top: 0px;">
+                                <label for="endocx"style="margin-top: 6px;">Endocx</label>
+                              <input type="checkbox" value="1" name="postfornix" id="postfornix" style="margin-top: 0px;">
+                                <label for="postfornix"style="margin-top: 6px;">Post Fornix</label>
+                              <input type="checkbox" value="1" name="latvagwall" id="latvagwall" style="margin-top: 0px;">
+                                <label for="latvagwall"style="margin-top: 6px;">Lat. Vag. Wall</label>
+                              </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <input type="checkbox" name="other1" id="other1" style="margin-top: 0px;">
+                                            <label for="other1txt"style="margin-top: 6px;">Other:</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="text" name="other1txt" id="other1txt" class="form-control" disabled="disabled" placeholder="Specify">
+                                        </div>
+                                    </div>
+                                </div>
+                                  <div class="col-12" style="margin-top: 6px;">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label for="lmp"style="margin-top: 6px;">LMP</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="time" name="lmp" class="form-control" id="lmp">
+                                        </div>
+                                    </div>
+                                </div>
+                              <input type="checkbox" value="1" name="post-meno" id="post-meno" style="margin-top: 0px;">
+                                <label for="post-meno">Post-Menopausal</label></br>
+                              <input type="checkbox" value="1" name="hrt" id="hrt" style="margin-top: 0px;">
+                                <label for="hrt">HRT</label>
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="checkbox" name="otherss" id="otherss" style="margin-top: 0px;">
+                                        <label for="othersstxt" style="margin-top: 6px;">Other, Namely:</label>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" name="othersstxt" id="othersstxt" class="form-control" disabled="disabled" placeholder="Specify">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <!--
+                <div class="col-12" style="margin-top: 20px;">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-1">
+                                    <label for="datenow"style="margin-top: 6px;">Date:</label>
+                                </div>
+                                <div class="col-11">
+                                    <input type="date" class="form-control" name="datenow" id="datenow">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-5">
+                                    <label for="reqsign">Requester's Signature</label>
+                                </div>
+                                <div class="col-7">
+                                    <input type="file" class="form-control" name="reqsign" id="reqsign" accept="image/*">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </fieldset>
             </div>
             <div class="py-4" align="center">
                 <button type="submit" class="btn btn-lg btn-secondary" name="submit" >Submit</button>

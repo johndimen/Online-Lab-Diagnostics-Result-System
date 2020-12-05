@@ -75,7 +75,7 @@ $covidpatient =  "CP-$randpatient-$day-$day1";
         </div>
     <form action="" method="post" class="ftco-animate">
         <fieldset>
-            <input type="text" name="patientid" value="<?php echo $covidpatient?>">
+            <input type="text" hidden name="patientid" value="<?php echo $covidpatient?>">
             <div class="" style="padding-bottom: 20px;">
                     <div class="row">
                         <div class="col-6" style="margin-bottom: 20px;">

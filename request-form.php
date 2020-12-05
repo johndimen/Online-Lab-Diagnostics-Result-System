@@ -61,9 +61,6 @@ include("php_action/add/request_form.php");
             <center><h2 class="mb-3" style="padding-top: 50px;">Laboratory Request <span>Form</span></h2></center>
         </div>
     <form action="" method="POST" class="ftco-animate">
-        <div class="">
-            <legend> Please Fill-up the form thoroughly!</legend>
-        </div>
         <div class="form-group">
             <fieldset>
                 <legend>Sample Details:</legend>
