@@ -1,8 +1,10 @@
 <?php
 include("php_action/db_config.php");
 include("php_action/add/covid-patient.php");
-include("php_action/retrieve/covid-patient.php");
+//include("php_action/retrieve/covid-patient.php");
 //include("php_action/random.php");
+
+
 
 $randpatient = rand(0,999999999);
 
@@ -10,6 +12,7 @@ $day = date('D');
 $day1 = date('d');
 
 $covidpatient =  "CP-$randpatient-$day-$day1"; 
+
 
 
 ?>
@@ -73,7 +76,7 @@ $covidpatient =  "CP-$randpatient-$day-$day1";
     <form action="" method="post" class="ftco-animate">
         <fieldset>
             <input type="text" name="patientid" value="<?php echo $covidpatient?>">
-            <div class="">
+            <div class="" style="padding-bottom: 20px;">
                     <div class="row">
                         <div class="col-6" style="margin-bottom: 20px;">
                             <label for="covidDOB">What is your Date of Birth:</label>
@@ -95,21 +98,78 @@ $covidpatient =  "CP-$randpatient-$day-$day1";
                         <div class="row">
                             <div class="col-6">
                                 <input type="text" class="form-control" name="Fname" id="Fname" placeholder="First Name">
+                                <span class="help-block"><?php echo $Fname_err;?></span>
                                 <input type="text" class="form-control" name="Lname" id="Lname" placeholder="Last Name">
+                                <span class="help-block"><?php echo $Lname_err;?></span>
                                 <input type="text" class="form-control" name="Address1" id="Address1" placeholder="Current Address">
+                                <span class="help-block"><?php echo $address_err;?></span>
                                 <input type="text" class="form-control" name="City" id="City" placeholder="City">
+                                <span class="help-block"><?php echo $city_err;?></span>
                             </div>
                             <div class="col-6">
                                 <input type="text" class="form-control" name="State" id="State" placeholder="State/Province">
+                                <span class="help-block"><?php echo $state_err;?></span>
                                 <input type="text" class="form-control" name="Zipcode" id="Zipcode" placeholder="Zipcode">
+                                <span class="help-block"><?php echo $zipcode_err;?></span>
                                 <input type="email" class="form-control" name="Email" id="Email"  placeholder="E-mail Address">
+                                <span class="help-block"><?php echo $email_err;?></span>
                                 <input type="tel" class="form-control" name="Contact" id="Contact" placeholder="Contact Number">
+                                <span class="help-block"><?php echo $contact_err;?></span>
                             </div>
                         </div>
                     </div>
             </div>
+            <div class="ftco-animate" style="padding-bottom: 30px;">
+                <h3 align="center">Covid-19 Information Sheet</h3>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-6">
+                        <div class="" style="margin-top: 20px;">
+                            <label for="deceases">Do you suffer from any deceases? if yes, please enumerate</label>
+                            <div class="">
+                                <input placeholder="Cardiovascular, Diabetes, Asthma, etc." type="text" class="form-control" name="deceases" id="deceases">
+                            </div>
+                        </div>
+                        <div class=""style="margin-top: 20px;">
+                            <label for="travel">Do you have a travel history to any countries? if yes, please enumerate</label>
+                            <div class="">
+                                <input placeholder="China, US, UK, etc." type="text" class="form-control" name="travel" id="travel">
+                            </div>
+                        </div>
+                        <div class=""style="margin-top: 20px;">
+                            <label for="contact">Approximately, how many people have you come in contact with in past 15 days?</label>
+                            <div class="">
+                                <input placeholder="# of contacted people" type="text" class="form-control" name="contact" id="contact">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class=""style="margin-top: 20px;">
+                            <label for="preggy">Are you pregnant? If yes, select the number of weeks.</label>
+                            <div class="">
+                                <input placeholder="# of weeks" type="text" class="form-control" name="preggy" id="preggy">
+                            </div>
+                        </div>
+                        <div class=""style="margin-top: 20px;">
+                            <label for="tested">Have you been tested at airport or hospital?</label>
+                            <div class="">
+                                <select class="form-control" name="tested" id="tested">
+                                    <option value="">Select yes/no</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="" style="margin-top: 20px;">
+                    <label for="">Do you experience any other difficulties?</label>
+                    <div class="">
+                        <textarea class="form-control" name="difficulties" id="difficulties" width="100%" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
             <div class="py-4" align="center">
-                <button type="submit" class="btn btn-lg btn-secondary" name="next" >Next</button>
+                <button type="submit" class="btn btn-lg btn-secondary" name="submit">Submit</button>
                 <button type="reset" class="btn btn-lg btn-outline-primary" >Clear</button>
             </div>
         </fieldset>

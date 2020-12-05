@@ -1,7 +1,39 @@
 <?php
 
+
+$Fname_err = $Lname_err = $address_err = $email_err = $contact_err = "";
+$city_err = $zipcode_err = $state_err = $dob_err = $gender_err = "";
+
 // insert covid patient info
-    if(isset($_POST['next'])){ 
+    if(isset($_POST['submit'])){ 
+/*
+            // Validate Fname
+    $input_name = trim($_POST["Fname"]);
+    if(empty($input_name)){
+        $Fname_err = "Please enter your first name.";
+    } elseif(!filter_var(trim($_POST["name"]), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z'-.\s ]+$/")))){
+        $Fname_err = 'Please enter a valid first name.';
+    }
+    // Validate Lname
+    $input_name = trim($_POST["Lname"]);
+    if(empty($input_name)){
+        $Lname_err = "Please enter your last name.";
+    } elseif(!filter_var(trim($_POST["name"]), FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z'-.\s ]+$/")))){
+        $Lname_err = 'Please enter a valid last name.';
+    }
+        // Validate address
+        $input_address = trim($_POST["Address1"]);
+        if(empty($input_address)){
+            $address_err = 'Please enter an address.';     
+        }
+    
+        // Validate address
+        $input_city = trim($_POST["City"]);
+        if(empty($input_city)){
+            $city_err = 'Please enter a city.';     
+        }
+        */
+
         $patientid = $_POST['patientid'];
         $covidDOB = $_POST['covidDOB'];
         $gender = $_POST['gender'];
@@ -29,45 +61,41 @@
 
         mysqli_affected_rows($conn);
 
+
         if(mysqli_affected_rows($conn) > 0){
             echo "<script>alert('Patient Info Successfully Sent!')</script>";
-			echo "<script>location.href='covid-form.php'</script>";
+			echo "<script>location.href='index.html'</script>";
 		}else 
 		    {
                 echo "<script>alert('Unsuccessfully Send!')</script>";
 			}
     }
 
-    
-// insert covid questions
-if(isset($_POST['submit1'])){
-    $randcovid = mt_rand(0,999999999);
+if(isset($_POST['submit'])){
+    $patientid = $_POST['patientid'];
     $deceases = $_POST['deceases'];
     $travel = $_POST['travel'];
     $contact = $_POST['contact'];
     $preggy = $_POST['preggy'];
     $tested = $_POST['tested'];
     $difficulties = $_POST['difficulties'];
+
     
+
+
 //second
-    $insert_query = "INSERT INTO `covid_questions`(`fkpatientid`,`Patient_ID`, `Deceases`, `Travel_History`, `Contact_People`, `Pregnant_Weeks`, `Tested_at`, `Other_Difficulties`) 
-                        VALUES ('$randcovid','','$deceases',' $travel','$contact','$preggy','$tested','$difficulties')";
+        $insert_query = "INSERT INTO `covid_questions`(`Patient_ID`, `Deceases`, `Travel_History`, `Contact_People`, `Pregnant_Weeks`, `Tested_at`, `Other_Difficulties`) 
+                            VALUES ('$patientid','$deceases',' $travel','$contact','$preggy','$tested','$difficulties')";
 
-    $insert_result = mysqli_query($conn, $insert_query);
-    if (!$insert_result) {
-        printf("Error: %s\n", mysqli_error($conn));
-        exit();
-    }
+        $insert_result = mysqli_query($conn, $insert_query);
+            if (!$insert_result) {
+            printf("Error: %s\n", mysqli_error($conn));
+            exit();
+            }
 
-    mysqli_affected_rows($conn);
+        mysqli_affected_rows($conn);
 
-    if(mysqli_affected_rows($conn) > 0){
-        echo "<script>alert('Successfully Sent!')</script>";
-        echo "<script>location.href='index.html'</script>";
-    }else 
-        {
-            echo "<script>alert('Unsuccessfully Send!')</script>";
-        }
 }
+    
 
 ?>
