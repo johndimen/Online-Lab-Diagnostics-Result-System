@@ -63,7 +63,7 @@ $city_err = $zipcode_err = $state_err = $dob_err = $gender_err = "";
 
 
         if(mysqli_affected_rows($conn) > 0){
-            echo "<script>alert('Patient Info Successfully Sent!')</script>";
+            echo "<script>alert('Patient Info and Covid information Successfully Sent!')</script>";
 			echo "<script>location.href='index.html'</script>";
 		}else 
 		    {
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])){
     
 
 
-//second
+//second insert to covid question
         $insert_query = "INSERT INTO `covid_questions`(`Patient_ID`, `Deceases`, `Travel_History`, `Contact_People`, `Pregnant_Weeks`, `Tested_at`, `Other_Difficulties`) 
                             VALUES ('$patientid','$deceases',' $travel','$contact','$preggy','$tested','$difficulties')";
 
@@ -94,6 +94,28 @@ if(isset($_POST['submit'])){
             }
 
         mysqli_affected_rows($conn);
+
+}
+
+if(isset($_POST['submit'])){
+
+    $random = rand(0,999999999);
+    $day = date('z');
+    $yr = date('M');
+
+    $requestid = "RQ-$random-$yr-$day";
+    
+//third insert to request table
+    $insert = "INSERT INTO `request`(`Request_ID`, `Patient_ID`, `Request_Type`, `Is_Accepted`)
+             VALUES ('$requestid','$patientid','covid',0)";
+    
+    $insert_result = mysqli_query($conn, $insert);
+    if (!$insert) {
+    printf("Error: %s\n", mysqli_error($conn));
+    exit();
+    }
+
+    mysqli_affected_rows($conn);
 
 }
     
