@@ -107,7 +107,7 @@ if(isset($_POST['submit'])){
     
 //third insert to request table
     $insert = "INSERT INTO `request`(`Request_ID`, `Patient_ID`, `Request_Type`, `Is_Accepted`)
-             VALUES ('$requestid','$patientid','covid',0)";
+             VALUES ('$requestid','$patientid','covid','0')";
     
     $insert_result = mysqli_query($conn, $insert);
     if (!$insert) {

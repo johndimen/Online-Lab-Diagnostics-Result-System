@@ -2,7 +2,7 @@
 
 include("php_action/db_config.php");
 include("php_action/session.php");
-include("php_action/retrieve/request.php");
+include("php_action/retrieve/receive.php");
 include("php_action/add/requester.php");
 
 if(!isset($_SESSION['login_user'])){
@@ -75,6 +75,7 @@ if(!isset($_SESSION['login_user'])){
     <table class="table table-striped table-bordered ftco-animate">
         <thead class="thead-dark">
           <tr>
+            <th scope="col">Request #</th>
             <th scope="col">Patient #</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
@@ -83,360 +84,24 @@ if(!isset($_SESSION['login_user'])){
           </tr>
         </thead>
         <tbody>
+        <?php 
+          while($receivetable = mysqli_fetch_array($dashquery)){ 
+        ?>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row"> <?php echo $receivetable[0] ?> </th>
+            <th> <?php echo $receivetable['Patient_ID'] ?> </th>
+            <td> <?php echo $receivetable['Patient_Fname'] ?> </td>
+            <td> <?php echo $receivetable['Patient_Lname'] ?> </td>
+            <td> <?php echo $receivetable['Request_Date'] ?> </td>
             <td>
-              <a href="admin-requester.php" class="btn btn-primary btn-lg" >View</a>
+              <a href="admin-requester.php?id=<?php echo $receivetable['Patient_ID'] ?>" class="btn btn-primary btn-lg" title='View Record' data-toggle='tooltip'>View</a>
             </td>
           </tr>
+          <?php }?>
         </tbody>
       </table>
     </div>
   </section>
-  
-
-
-<form action="" method="POST">
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Laboratory Request No.</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-6">
-              <legend>Patient Info</legend>
-              <label for="">Name:</label><br>
-              <label for="">Address:</label><br>
-              <label for="">Gender:</label><br>
-              <label for="">Contact #:</label><br>
-              <label for="">Date of Birth:</label>
-            </div>
-            <div class="col-6">
-            <div class="row">
-              <legend>Requester Info</legend>
-              <div class="col-4 ">
-                <div class="form-group">
-                  <label for="name" style="padding-top: 8px;" >Name:</label>
-                </div>
-                <div class="form-group">
-                  <label for="org"  style="padding-top: 14px;">Organization Name:</label>
-                </div>
-                <div class="form-group">
-                  <label for="add" style="padding-top: 15px;">Address:</label>
-                </div>
-                <div class="form-group">
-                  <label for="contact" style="padding-top: 12px;">Contact #:</label>
-                </div>
-              </div>
-              <div class="">
-                <div class="form-group">
-                  <select class="form-control" name="name" id="name">
-                    <option value="">Select Requester</option>
-                    <?php 
-                    while($receive = mysqli_fetch_array($reqquery)){?>
-                      <option value="<?php echo $receive['Personel_Name'] ?>"><?php echo $receive['Personel_Name'] ?> </option>
-                    <?php }?>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="org" id="org">
-                </div>
-                <div class="">
-                  <div class="form-group">
-                    <div class="form-field">
-                      <div class="select-wrap">
-                        <select name="add" id="add" class="form-control">
-                          <option value="">Select Address</option>
-                          <option value="manila">Manila</option>
-                          <option value="makati">Makati</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group"> 
-                    <input type="tel" name="contact" id="contact" class="form-control" placeholder="Cell # or Telephone #" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}">
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-          <center><legend style="padding-top: 10px;">Tests Information</legend></center>
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Sample details</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Urgency</th>
-                  <th scope="col">Fasting</th>
-                  <th scope="col">Sample Type</th>
-                  <th scope="col">Sample taken(date/time)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td></td>
-                </tr> 
-              </tbody>
-            </table>
-          </div>
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Related Clinical Information</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Drug Theraphy</th>
-                  <th scope="col">Last Dose</th>
-                  <th scope="col">Dose taken(date/time)</th>
-                  <th scope="col">Other relevant clinical information</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Profile Test</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">G2000</th>
-                  <th scope="col">G2000X</th>
-                  <th scope="col">GT9</th>
-                  <th scope="col">GTI</th>
-                  <th scope="col">NEO</th>
-                  <th scope="col">ES</th>
-                  <th scope="col">HB3</th>
-                  <th scope="col">DFS</th>
-                  <th scope="col">LFT</th>
-                  <th scope="col">TFT</th>
-                  <th scope="col">MAC</th>
-                  <th scope="col">LGL</th>
-                  <th scope="col">LIP</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Biochemistry</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">CEA</th>
-                  <th scope="col">CA1</th>
-                  <th scope="col">CA5</th>
-                  <th scope="col">CA9</th>
-                  <th scope="col">PSA</th>
-                  <th scope="col">AFP</th>
-                  <th scope="col">Glucose</th>
-                  <th scope="col">HIV 1&2 </th>
-                  <th scope="col">HBsAg</th>
-                  <th scope="col">HbA1c</th>
-                  <th scope="col">H. pylori</th>
-                  <th scope="col">Uric Acid</th>
-                  <th scope="col">Free T4</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Hematology</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">FBE (incl. ESR)</th>
-                  <th scope="col">FBC</th>
-                  <th scope="col">Hb</th>
-                  <th scope="col">TWDC</th>
-                  <th scope="col">Platelets</th>
-                  <th scope="col">ABO & RH (D)</th>
-                  <th scope="col">Malaria Parasites</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Microbiology</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Urine-FEME</th>
-                  <th scope="col">RPR (VDRL)</th>
-                  <th scope="col">Culture/Sensitivity/Microscopy</th>
-                  <th scope="col">AFB (ZN) Smear Only</th>
-                  <th scope="col">AFB Smear & Culture</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-                    
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Anatomical Pathology</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Histology</th>
-                  <th scope="col">Non-Gynae/FNA</th>
-                  <th scope="col">Site</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>1</th>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-                    
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Cervical Cytology</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Pap smear</th>
-                  <th scope="col">Normal</th>
-                  <th scope="col">Post-Mono Blood</th>
-                  <th scope="col">Sups Lesion</th>
-                  <th scope="col">Other</th>
-                  <th scope="col">Site: Cervix</th>
-                  <th scope="col">Site: Vault</th>
-                  <th scope="col">Site: Endocx</th>
-                  <th scope="col">Site: Post Fornix</th>
-                  <th scope="col">Site: Lat. Vag. Wall</th>
-                  <th scope="col">Site: Other</th>
-                  <th scope="col">LMP</th>
-                  <th scope="col">Post-Menopausal</th>
-                  <th scope="col">HRT</th>
-                  <th scope="col">Others</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-                    
-          <div class="">
-            <table class="table table-striped table-bordered ftco-animate">
-              <h5>Additional Tests</h5>
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">Additional Tests</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Accept Request</button>
-          <button type="button" class="btn btn-danger">Deline Request</button>
-          <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
 
 <section class="ftco-section img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
     <div class="overlay"></div>

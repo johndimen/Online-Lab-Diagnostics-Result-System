@@ -3,6 +3,7 @@
 include("php_action/db_config.php");
 include("php_action/session.php");
 include("php_action/retrieve/request.php");
+//include("php_action/retrieve/sample_info.php");
 include("php_action/add/requester.php");
 
 if(!isset($_SESSION['login_user'])){
@@ -71,32 +72,35 @@ if(!isset($_SESSION['login_user'])){
             <div class="row">
                 <div class="col-6">
                     <legend>Patient Info</legend>
-                    <label for="">Name:</label><br>
-                    <label for="">Address:</label><br>
-                    <label for="">Gender:</label><br>
-                    <label for="">Contact #:</label><br>
-                    <label for="">Date of Birth:</label>
+                    <label for="">Patient ID:</label><label for=""><?php echo $receive['Patient_ID'] ?></label><br>
+                    <label for="">Name:</label><label for=""><?php echo $receive['Patient_Fname']." ".$receive['Patient_Lname'] ?></label><br>
+                    <label for="">Address:</label><label for=""><?php echo $receive['Address'] ?></label><br>
+                    <label for="">Gender:</label><label for=""><?php echo $receive['Gender'] ?></label><br>
+                    <label for="">Contact #:</label><label for=""><?php echo $receive['Contact_Number'] ?></label><br>
+                    <label for="">Date of Birth:</label><label for=""><?php echo $receive['DateofBirth'] ?></label>
                 </div>
-                <form action="php_action/requester.php" method="post">
+                <form action="" method="post">
                     <div class="row">
                         <legend>Requester Info</legend>
+                        <input type="text" hidden name="id" id="id" value="<?php echo $personel_check ?>">
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="name" style="padding-top: 8px;" >Name:</label>
+                                <label for="" style="padding-top: 8px;" >Name:</label>
                             </div>
                             <div class="form-group">
-                                <label for="org"  style="padding-top: 14px;">Organization Name:</label>
+                                <label for=""  style="padding-top: 14px;">Organization Name:</label>
                             </div>
                             <div class="form-group">
-                                <label for="add" style="padding-top: 15px;">Address:</label>
+                                <label for="" style="padding-top: 15px;">Address:</label>
                             </div>
                             <div class="form-group">
-                                <label for="contact" style="padding-top: 12px;">Contact #:</label>
+                                <label for="" style="padding-top: 12px;">Contact #:</label>
                             </div>
                         </div>
                         <div class="">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" id="name" disabled value=" <?php echo $login_session?>">
+                              <label for="" style="padding-left: 9px; padding-top:10px;"><?php echo $login_session?></label>
+                              <input type="text" class="form-control" name="name" id="name" hidden value=" <?php echo $login_session?>">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" name="org" id="org">
@@ -114,15 +118,15 @@ if(!isset($_SESSION['login_user'])){
                                     </div>
                                 </div>
                                 <div class="form-group"> 
-                                    <input type="tel" name="contact" id="contact" class="form-control" placeholder="Cell # or Telephone #" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}">
+                                    <input type="tel" name="contact" id="contact" class="form-control" placeholder="Cell # or Telephone #" > <!--pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"-->
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-secondary">Accept Request</button>
-                            <button type="button" class="btn btn-danger">Deline Request</button>
+                            <button type="submit" name="accept" class="btn btn-secondary">Accept Request</button>
+                            <button type="button" name="decline" class="btn btn-danger">Deline Request</button>
                             <button type="reset" class="btn btn-outline-secondary">Reset</button>
                         </div>
                     </div>
@@ -136,16 +140,51 @@ if(!isset($_SESSION['login_user'])){
                 <tr>
                   <th scope="col">Urgency</th>
                   <th scope="col">Fasting</th>
-                  <th scope="col">Sample Type</th>
-                  <th scope="col">Sample taken(date/time)</th>
+                  <th scope="col">Sample Date</th>
+                  <th scope="col">Sample Time</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php 
+              $id1 = $_GET['id'];
+
+              $retsql = "SELECT `Urgency`, `Fasting`, `Sample_Date`, `Sample_Time` 
+                      FROM `sample_detail` WHERE `Patient_ID` = '$id1'";
+              
+              $retqry = mysqli_query($conn,$retsql);
+              $retrslt = mysqli_fetch_array($retqry);
+              ?>
+                <tr>
+                  <td><?php echo $retrslt[0]?></td>
+                  <td><?php echo $retrslt[1]?></td>
+                  <td><?php echo $retrslt[2]?></td>
+                  <td><?php echo $retrslt[3]?></td>
+                </tr> 
+              </tbody>
+            </table>
+            <table class="table table-striped table-bordered ftco-animate">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Blood</th>
+                  <th scope="col">Urine</th>
+                  <th scope="col">Sputum</th>
+                  <th scope="col">Swab</th>
+                  <th scope="col">Fluids</th>
+                  <th scope="col">Tissue</th>
+                  <th scope="col">Cytology</th>
+                  <th scope="col">Other</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td></td>
+                  <td><?php echo $retrslt1['Blood']?></td>
+                  <td><?php echo $retrslt1['Urine']?></td>
+                  <td><?php echo $retrslt1['Sputum']?></td>
+                  <td><?php echo $retrslt1['Swab']?></td>
+                  <td><?php echo $retrslt1['Fluids']?></td>
+                  <td><?php echo $retrslt1['Tissue']?></td>
+                  <td><?php echo $retrslt1['Cytology']?></td>
+                  <td><?php echo $retrslt1['other']?></td>
                 </tr> 
               </tbody>
             </table>
