@@ -39,7 +39,7 @@ if(isset($_POST['accept'])){
 
     $id = $_GET['id'];
 
-    $updateqry = "UPDATE `request` SET `Is_Accepted`= 'Yes' WHERE `request`.`Request_ID` = '$id'";
+    $updateqry = "UPDATE `request` SET `Is_Accepted` = 'Yes' WHERE `request`.`Patient_ID` = '$id'";
     $updateresult = mysqli_query($conn,$updateqry);
     if(!$updateresult){
         printf("Error: %s\n", mysqli_error($conn));
@@ -47,20 +47,36 @@ if(isset($_POST['accept'])){
     }
 
     mysqli_affected_rows($conn);
+    
+    if(mysqli_affected_rows($conn) > 0){
+        echo "<script>alert('Successfully Updated!')</script>";
+        echo "<script>location.href='admin-request.php'</script>";
+    }else 
+        {
+            echo "<script>alert('Unsuccessfully Updated!')</script>";
+        }
 }
 
 if(isset($_POST['decline'])){
 
     $id = $_GET['id'];
 
-    $updateqry = "UPDATE `request` SET `Is_Accepted`= 'No' WHERE `request`.`Request_ID` = '$id'";
-    $updateresult = mysqli_query($conn,$updateqry);
-    if(!$updateresult){
+    $updateqry1 = "UPDATE `request` SET `Is_Accepted`= 'No' WHERE `request`.`Patient_ID` = '$id'";
+    $updateresult1 = mysqli_query($conn,$updateqry1);
+    if(!$updateresult1){
         printf("Error: %s\n", mysqli_error($conn));
         exit();
     }
 
     mysqli_affected_rows($conn);
+    
+    if(mysqli_affected_rows($conn) > 0){
+        echo "<script>alert('Successfully Updated!')</script>";
+        echo "<script>location.href='admin-request.php'</script>";
+    }else 
+        {
+            echo "<script>alert('Unsuccessfully Updated!')</script>";
+        }
 }
 
 ?>

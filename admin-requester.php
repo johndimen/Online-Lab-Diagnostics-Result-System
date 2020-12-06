@@ -126,7 +126,7 @@ if(!isset($_SESSION['login_user'])){
                     <div class="">
                         <div class="form-group">
                             <button type="submit" name="accept" class="btn btn-secondary">Accept Request</button>
-                            <button type="button" name="decline" class="btn btn-danger">Deline Request</button>
+                            <button type="submit" name="decline" class="btn btn-danger">Deline Request</button>
                             <button type="reset" class="btn btn-outline-secondary">Reset</button>
                         </div>
                     </div>
