@@ -16,25 +16,41 @@ if(isset($_POST['submit'])){
     $Email = $_POST['Email'];
     $Contact = $_POST['Contact'];
 
-   
-//first
+    $random = rand(0,999999999);
+    $day = date('z');
+    $yr = date('M');
 
-    $insert_query1 = "INSERT INTO `patient_info`(`Patient_ID`, `Patient_Fname`, `Patient_Lname`, `DateofBirth`, `Address`, `Email`, `Contact_Number`, `Gender`, `City`, `Zipcode`, `State`) 
-                        VALUES ('$patientid','$Fname','$Lname','$covidDOB','$Address1','$Email','$Contact','$gender','$City','$Zipcode','$State')";
+    $requestid = "RQ-$random-$yr-$day";
 
-
-    $insert_result1 = mysqli_query($conn,$insert_query1);
+    $patientid = $_POST['patientid'];
+    $additonaltest = $_POST['additonaltest'];
     
 
+   
+//first 
+        $insert_query1 = "INSERT INTO `patient_info`(`Patient_ID`, `Patient_Fname`, `Patient_Lname`, `DateofBirth`, `Address`, `Email`, `Contact_Number`, `Gender`, `City`, `Zipcode`, `State`) 
+                        VALUES ('$patientid','$Fname','$Lname','$covidDOB','$Address1','$Email','$Contact','$gender','$City','$Zipcode','$State')";
+       
+        $insert = "INSERT INTO `request`(`Request_ID`, `Patient_ID`, `Request_Type`, `Is_Accepted`)
+                        VALUES ('$requestid','$patientid','lab','No')";
+        $insert_result1 = mysqli_query($conn,$insert_query1);       
+        
+
+
+    
+ mysqli_affected_rows($conn);
     if (!$insert_result1) {
         printf("Error: %s\n", mysqli_error($conn));
         exit();
-    }
+    }elseif(mysqli_affected_rows($conn) > 0){
 
-    mysqli_affected_rows($conn);
+        $insert_query10 = "INSERT INTO `additional_test`(`Patient_ID`, `Specify`)
+        VALUES ('$patientid','$additonaltest')";
 
+        $insert_result10 = mysqli_query($conn,$insert_query10);
 
-    if(mysqli_affected_rows($conn) > 0){
+        $insert_result = mysqli_query($conn, $insert);
+
         echo "<script>alert('Patient Info Successfully Sent!')</script>";
         echo "<script>location.href='index.html'</script>";
     }else 
@@ -444,15 +460,14 @@ if(isset($_POST['submit'])){
         
         mysqli_affected_rows($conn);
     }
-
-                
+           /*
         if(isset($_POST['submit'])){
             
             $patientid = $_POST['patientid'];
             $additonaltest = $_POST['additonaltest'];
 
             $insert_query10 = "INSERT INTO `additional_test`(`Patient_ID`, `Specify`)
-                             VALUES ('$patientid',$additonaltest)";
+                             VALUES ('$patientid','$additonaltest')";
 
             $insert_result10 = mysqli_query($conn,$insert_query10);
             if(!$insert_result10){
@@ -462,7 +477,7 @@ if(isset($_POST['submit'])){
             
             mysqli_affected_rows($conn);
         }
-
+*/
         if(isset($_POST['submit'])){
 
             
@@ -474,7 +489,7 @@ if(isset($_POST['submit'])){
             
         // insert to request table
             $insert = "INSERT INTO `request`(`Request_ID`, `Patient_ID`, `Request_Type`, `Is_Accepted`)
-                     VALUES ('$requestid','$patientid','lab','0')";
+                     VALUES ('$requestid','$patientid','lab','No')";
             
             $insert_result = mysqli_query($conn, $insert);
             if (!$insert_result) {

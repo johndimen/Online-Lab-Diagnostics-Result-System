@@ -72,12 +72,12 @@ if(!isset($_SESSION['login_user'])){
             <div class="row">
                 <div class="col-6">
                     <legend>Patient Info</legend>
-                    <label for="">Patient ID:</label><label for=""><?php echo $receive['Patient_ID'] ?></label><br>
-                    <label for="">Name:</label><label for=""><?php echo $receive['Patient_Fname']." ".$receive['Patient_Lname'] ?></label><br>
-                    <label for="">Address:</label><label for=""><?php echo $receive['Address'] ?></label><br>
-                    <label for="">Gender:</label><label for=""><?php echo $receive['Gender'] ?></label><br>
-                    <label for="">Contact #:</label><label for=""><?php echo $receive['Contact_Number'] ?></label><br>
-                    <label for="">Date of Birth:</label><label for=""><?php echo $receive['DateofBirth'] ?></label>
+                    <label for="">Patient ID:</label><label for=""><?php echo $receive1['Patient_ID'] ?></label><br>
+                    <label for="">Name:</label><label for=""><?php echo $receive1['Patient_Fname']." ".$receive1['Patient_Lname'] ?></label><br>
+                    <label for="">Address:</label><label for=""><?php echo $receive1['Address'] ?></label><br>
+                    <label for="">Gender:</label><label for=""><?php echo $receive1['Gender'] ?></label><br>
+                    <label for="">Contact #:</label><label for=""><?php echo $receive1['Contact_Number'] ?></label><br>
+                    <label for="">Date of Birth:</label><label for=""><?php echo $receive1['DateofBirth'] ?></label>
                 </div>
                 <form action="" method="post">
                     <div class="row">
@@ -145,20 +145,11 @@ if(!isset($_SESSION['login_user'])){
                 </tr>
               </thead>
               <tbody>
-              <?php 
-              $id1 = $_GET['id'];
-
-              $retsql = "SELECT `Urgency`, `Fasting`, `Sample_Date`, `Sample_Time` 
-                      FROM `sample_detail` WHERE `Patient_ID` = '$id1'";
-              
-              $retqry = mysqli_query($conn,$retsql);
-              $retrslt = mysqli_fetch_array($retqry);
-              ?>
                 <tr>
-                  <td><?php echo $retrslt[0]?></td>
-                  <td><?php echo $retrslt[1]?></td>
-                  <td><?php echo $retrslt[2]?></td>
-                  <td><?php echo $retrslt[3]?></td>
+                  <td><?php echo $retrslt1['Urgency']?></td>
+                  <td><?php echo $retrslt1['Fasting']?></td>
+                  <td><?php echo $retrslt1['Sample_Date']?></td>
+                  <td><?php echo $retrslt1['Sample_Time']?></td>
                 </tr> 
               </tbody>
             </table>
