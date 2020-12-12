@@ -36,7 +36,6 @@ if(isset($_POST['submit'])){
         $insert_result1 = mysqli_query($conn,$insert_query1);       
         
 
-
     
  mysqli_affected_rows($conn);
     if (!$insert_result1) {

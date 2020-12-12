@@ -11,6 +11,7 @@ if(!isset($_SESSION['login_user'])){
   die();
 }
 
+$id = $_GET['id'];
 
 ?>
 
@@ -168,14 +169,54 @@ if(!isset($_SESSION['login_user'])){
               </thead>
               <tbody>
                 <tr>
-                  <td><?php echo $retrslt1['Blood']?></td>
-                  <td><?php echo $retrslt1['Urine']?></td>
-                  <td><?php echo $retrslt1['Sputum']?></td>
-                  <td><?php echo $retrslt1['Swab']?></td>
-                  <td><?php echo $retrslt1['Fluids']?></td>
-                  <td><?php echo $retrslt1['Tissue']?></td>
-                  <td><?php echo $retrslt1['Cytology']?></td>
-                  <td><?php echo $retrslt1['other']?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Blood'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Blood'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Urine'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Urine'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Sputum'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Sputum'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Swab'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Swab'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Fluids'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Fluids'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Tissue'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Tissue'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Cytology'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Cytology'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['other'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['other'];
+                  }?></td>
                 </tr> 
               </tbody>
             </table>
@@ -185,7 +226,7 @@ if(!isset($_SESSION['login_user'])){
               <h5>Related Clinical Information</h5>
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">Drug Theraphy</th>
+                  <th scope="col">Drug Therapy</th>
                   <th scope="col">Last Dose</th>
                   <th scope="col">Dose taken(date/time)</th>
                   <th scope="col">Other relevant clinical information</th>
@@ -193,10 +234,33 @@ if(!isset($_SESSION['login_user'])){
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td><?php 
+                  if(empty($receive2['Drug_Therapy'])){
+                    echo "N/A";
+                  }else{
+                    echo $receive2['Drug_Therapy'];
+                  } ?>
+                  </td>
+                  <td><?php 
+                  if(empty($receive2['last_Dose'])){
+                    echo "N/A";
+                  }else{
+                    echo $receive2['last_Dose'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($receive2['Dose_Date'])){
+                    echo "N/A";
+                  }else{
+                    echo $receive2['Dose_Date']. " " .$receive2['Dose_Time'];
+                  }?>
+                  </td>
+                  <td><?php 
+                  if(empty($receive2['Other_Info'])){
+                    echo "N/A";
+                  }else{
+                    echo $receive2['Other_Info'];
+                  }?>
+                  </td>
                 </tr>
               </tbody>
             </table>

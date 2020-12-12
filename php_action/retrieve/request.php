@@ -16,29 +16,26 @@ $dashquery1 = mysqli_query($conn, $dashsql1);
 $receive1 = mysqli_fetch_assoc($dashquery1);
 
 
-$retsql1 = "SELECT `Blood`, `Urine`, `Sputum`, `Swab`, `Fluids`, `Tissue`, `Cytology`, `other`
-			 FROM `sample_detail` WHERE `Patient_ID` = '$id'";
+$retsql1 = "SELECT * FROM `sample_detail` WHERE `Patient_ID` = '$id'";
 
 $retqry1 = mysqli_query($conn,$retsql1);
 $retrslt1 = mysqli_fetch_assoc($retqry1);
 
 
-$dashsql2 = "SELECT `p`.*, `r`.*
-	FROM `patient_info` AS `p` 
-	JOIN `request` AS `r` ON `r`.`Patient_ID` = `p`.`Patient_ID` WHERE `r`.`Patient_ID` = '$id'"; 
+$dashsql2 = "SELECT * FROM `relevant_info` WHERE `Patient_ID` = '$id'"; 
 $dashquery2 = mysqli_query($conn, $dashsql2);
 $receive2 = mysqli_fetch_assoc($dashquery2);
 
 
-$retsql1 = "SELECT `Blood`, `Urine`, `Sputum`, `Swab`, `Fluids`, `Tissue`, `Cytology`, `other`
-			 FROM `sample_detail` WHERE `Patient_ID` = '$id'";
+$retsql2 = "SELECT * FROM `profile_test` WHERE `Patient_ID` = '$id'";
 
-$retqry1 = mysqli_query($conn,$retsql1);
-$retrslt1 = mysqli_fetch_assoc($retqry1);
-
+$retqry2 = mysqli_query($conn,$retsql2);
+$retrslt2 = mysqli_fetch_assoc($retqry2);
 
 
-/*SELECT `pt`.*, `r`.*, `a`.*, `ap`.*, `b`.*, `c`.*, `h`.*, `m`.*, `p`.*, `ri`.*, `s`.*
+/*
+
+SELECT `pt`.*, `r`.*, `a`.*, `ap`.*, `b`.*, `c`.*, `h`.*, `m`.*, `p`.*, `ri`.*, `s`.*
 FROM `patient_info` AS `pt` 
 	 LEFT JOIN `request` AS `r` ON `r`.`Patient_ID` = `pt`.`Patient_ID` 
 	 LEFT JOIN `additional_test` AS `a` ON `a`.`Patient_ID` = `pt`.`Patient_ID` 
