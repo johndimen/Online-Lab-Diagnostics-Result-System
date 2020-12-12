@@ -345,5 +345,9 @@
             $('[data-toggle="tooltip"]').tooltip();   
         });
 
+	$(document).ready(function() {
+    $('.search-single').select2();
+	});
+
 })(jQuery);
 

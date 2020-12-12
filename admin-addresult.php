@@ -26,6 +26,8 @@ if(!isset($_SESSION['login_user'])){
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/animate.css">
     
     <link rel="stylesheet" href="css/owl.carousel.min.css">
@@ -63,158 +65,24 @@ if(!isset($_SESSION['login_user'])){
 
 <section class="ftco-section ftco-no-pt  ftco-services-2 bg-light" style="margin-bottom: 30px;">
     <div class="container">
-      <div class=" heading-section ftco-animate" >
-        <div class="row">
-          <div class="col-12">
-            <div class="col-6">
-              <h2 class="mb-3" style="padding-top: 50px;">Released Request<span> Results</span></h2>
-            </div>
-            <div class="col-6" style="float: right; padding-bottom: 30px;" >
-              <a type="button" href="admin-addresult.php" style="float: right; margin-top: 10px;" name="search1" id="search1" class="btn btn-info btn-lg">Add Result</a>
-            </div>
-          </div>
+        <div class=" heading-section ftco-animate">
+            <h5 id="addModalLabel">Add Result</h5>
+        </div>
+        <div class="">
+            <form action="" method="post">
+                <div class="">
+                    <div class="py-sm-3">
+                      <legend>Patient Details</legend>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="add" class="btn btn-secondary">Add Result</button>
+                </div>
+            </form>
         </div>
     </div>
-    <table class="table table-striped table-bordered ftco-animate">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Request #</th>
-            <th scope="col">Patient #</th>
-            <th scope="col">Exam #</th>
-            <th scope="col">Type</th>
-            <th scope="col">Date Taken</th>
-            <th scope="col">Options</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php 
-          while($relresult = mysqli_fetch_assoc($relqry)){
-          ?>
-          <tr>
-            <th><?php echo $relresult['Request_ID'] ?></th>
-            <th><?php echo $relresult['Patient_ID'] ?></th>
-            <td><?php echo $relresult['Exam_ID']?></td>
-            <td><?php echo $relresult['Request_Type'] ?></td>
-            <td><?php echo $relresult['Exam_Taken']?></td>
-            <td>
-              <a href="admin-publish.php?id=<?php echo $relresult['Exam_ID'] ?>" class="btn btn-primary btn-lg" title='View Record' data-toggle='tooltip'>View</a>
-            </td>
-          </tr>
-          <?php } ?>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl">
-      <div class="modal-content">
-        <form action="" method="post">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Publish Result</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          
-          <div class="">
-            <legend>Patient Details</legend>
-            <table class="table table-striped table-bordered ftco-animate">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Patient #</th>
-                  <th scope="col">Patient Name</th>
-                  <th scope="col">Evaluation Result </th>
-                  <th scope="col">Date Finished</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class=" ftco-animate">
-            <fieldset>
-              <label for="eval">Evaluation Result</label>
-              <select class="form-control" name="eval" id="eval">
-                <option value="positive">Positive</option>
-                <option value="nagative">Negative</option>
-              </select>
-            </fieldset>
-          </div>
-          
-          <div class=" ftco-animate">
-            <fieldset>
-              <legend>Medical Summary</legend>
-              <textarea name="medsummary" id="medsummary" class="form-control" disabled="disabled" style="width: 100%;" cols="" rows="3"></textarea>
-            </fieldset>
-          </div>
-       
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" name="editModal" id="editModal">Edit</button>
-          <button type="submit" class="btn btn-secondary">Save changes & Publish</button>
-          <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-        </div>
-      </form>
-      </div>
-    </div>
-  </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="addModal" data-backdrop="static" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-xl">
-        <div class="modal-content">
-          <form action="" method="post">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addModalLabel">Add Result</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="">
-              <input type="search" name="search" id="search" class="form-control" placeholder="Patient search">
-            </div>
-            <div class="py-sm-3">
-              <legend>Patient Details</legend>
-              <table class="table table-striped table-bordered ftco-animate">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Patient #</th>
-                    <th scope="col">Patient Name</th>
-                    <th scope="col">Evaluation Result </th>
-                    <th scope="col">Date Tested</th>
-                    <th scope="col">Published</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-secondary">Add Result</button>
-            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-          </div>
-          </form>
-        </div>
-      </div>
-    </div>
+</section>
 
 <section class="ftco-section img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
     <div class="overlay"></div>
@@ -276,6 +144,7 @@ if(!isset($_SESSION['login_user'])){
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="js/google-map.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script src="js/main.js"></script>
 
 </body>

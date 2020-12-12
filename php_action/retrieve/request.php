@@ -33,6 +33,39 @@ $retqry2 = mysqli_query($conn,$retsql2);
 $retrslt2 = mysqli_fetch_assoc($retqry2);
 
 
+$retsql3 = "SELECT * FROM `biochem` WHERE `Patient_ID` = '$id'";
+
+$retqry3 = mysqli_query($conn,$retsql3);
+$retrslt3 = mysqli_fetch_assoc($retqry3);
+
+
+$retsql4 = "SELECT * FROM `hematology` WHERE `Patient_ID` = '$id'";
+
+$retqry4 = mysqli_query($conn,$retsql4);
+$retrslt4 = mysqli_fetch_assoc($retqry4);
+
+$retsql5 = "SELECT * FROM `microbiology` WHERE `Patient_ID` = '$id'";
+
+$retqry5 = mysqli_query($conn,$retsql5);
+$retrslt5 = mysqli_fetch_assoc($retqry5);
+
+$retsql6 = "SELECT * FROM `anatomical_pathology` WHERE `Patient_ID` = '$id'";
+
+$retqry6 = mysqli_query($conn,$retsql6);
+$retrslt6 = mysqli_fetch_assoc($retqry6);
+
+$retsql7 = "SELECT * FROM `cervical_cytology` WHERE `Patient_ID` = '$id'";
+
+$retqry7 = mysqli_query($conn,$retsql7);
+$retrslt7 = mysqli_fetch_assoc($retqry7);
+
+$retsql8 = "SELECT * FROM `additional_test` WHERE `Patient_ID` = '$id'";
+
+$retqry8 = mysqli_query($conn,$retsql7);
+$retrslt8 = mysqli_fetch_assoc($retqry7);
+
+
+
 /*
 
 SELECT `pt`.*, `r`.*, `a`.*, `ap`.*, `b`.*, `c`.*, `h`.*, `m`.*, `p`.*, `ri`.*, `s`.*

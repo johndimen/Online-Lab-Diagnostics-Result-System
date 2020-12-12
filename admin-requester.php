@@ -81,6 +81,8 @@ $id = $_GET['id'];
                     <label for="">Date of Birth:</label><label for=""><?php echo $receive1['DateofBirth'] ?></label>
                 </div>
                 <form action="" method="post">
+                  <input type="text" hidden name="rid" id="rid" value="<?php echo $receive1['Request_ID']?>">
+                  <input type="text" hidden name="pid" id="pid" value="<?php echo $receive1['Patient_ID'] ?>">
                     <div class="row">
                         <legend>Requester Info</legend>
                         <input type="text" hidden name="id" id="id" value="<?php echo $personel_check ?>">
@@ -147,10 +149,30 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <td><?php echo $retrslt1['Urgency']?></td>
-                  <td><?php echo $retrslt1['Fasting']?></td>
-                  <td><?php echo $retrslt1['Sample_Date']?></td>
-                  <td><?php echo $retrslt1['Sample_Time']?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Urgency'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Urgency'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Fasting'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Fasting'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Sample_Date'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Sample_Date'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt1['Sample_Time'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt1['Sample_Time'];
+                  }?></td>
                 </tr> 
               </tbody>
             </table>
@@ -288,19 +310,84 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td><?php 
+                  if(empty($retrslt2['G2000'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['G2000'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['G2000X'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['G2000X'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['GT9'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['GT9'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['GTI'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['GTI'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['NEO'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['NEO'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['ES'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['ES'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['HB3'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['HB3'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['DFS'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['DFS'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['LFT'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['LFT'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['TFT'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['TFT'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['MAC'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['MAC'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['LGL'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['LGL'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt2['LIP'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt2['LIP'];
+                  }?></td>
                 </tr>
               </tbody>
             </table>
@@ -328,19 +415,84 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td><?php 
+                  if(empty($retrslt3['CEA'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['CEA'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['CA1'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['CA1'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['CA5'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['CA5'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['CA9'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['CA9'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['PSA'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['PSA'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['AFP'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['AFP'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['Glucose'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['Glucose'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['HIV1_2'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['HIV1_2'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['HbA1c'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['HbA1c'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['HBsAg'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['HBsAg'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['Hpylori'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['Hpylori'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['UricAcid'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['UricAcid'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt3['FreeT4'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt3['FreeT4'];
+                  }?></td>
                 </tr>
               </tbody>
             </table>
@@ -362,13 +514,48 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td><?php 
+                  if(empty($retrslt4['FBE'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt4['FBE'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt4['FBC'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt4['FBC'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt4['Hb'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt4['Hb'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt4['TWDC'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt4['TWDC'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt4['Platelets'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt4['Platelets'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt4['ABO_Rh'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt4['ABO_Rh'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt4['Malaria'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt4['Malaria'];
+                  }?></td>
                 </tr>
               </tbody>
             </table>
@@ -388,11 +575,36 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td><?php 
+                  if(empty($retrslt5['Urine_FEME'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt5['Urine_FEME'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt5['FPR'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt5['FPR'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt5['Microscopy'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt5['Microscopy'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt5['AFB_s'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt5['AFB_s'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt5['AFB_s_c'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt5['AFB_s_c'];
+                  }?></td>
                 </tr>
               </tbody>
             </table>
@@ -410,9 +622,24 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <th>1</th>
-                  <td>1</td>
-                  <td>1</td>
+                  <th><?php 
+                  if(empty($retrslt6['Histology'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt6['Histology'];
+                  }?></th>
+                  <td><?php 
+                  if(empty($retrslt6['Non_Gynae_FNA'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt6['Non_Gynae_FNA'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt6['Site'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt6['Site'];
+                  }?></td>
                 </tr>
               </tbody>
             </table>
@@ -442,21 +669,96 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td><?php 
+                  if(empty($retrslt7['Pap_Smear'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Pap_Smear'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Normal'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Normal'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Post_Mono_Blood'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Post_Mono_Blood'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Susp_Lesion'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Susp_Lesion'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Other'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Other'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Cervix'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Cervix'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Vault'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Vault'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Endocx'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Endocx'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Post_Fornix'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Post_Fornix'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Lat_Vag_Wall'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Lat_Vag_Wall'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Site_Other'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Site_Other'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['LMP'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['LMP'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Post_Menopausal'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Post_Menopausal'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['HRT'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['HRT'];
+                  }?></td>
+                  <td><?php 
+                  if(empty($retrslt7['Others'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt7['Others'];
+                  }?></td>
                 </tr>
               </tbody>
             </table>
@@ -473,7 +775,12 @@ $id = $_GET['id'];
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
+                  <td><?php 
+                  if(empty($retrslt8['Specify'])){
+                    echo "N/A";
+                  }else{
+                    echo $retrslt8['Specify'];
+                  }?></td>
                 </tr>
               </tbody>
             </table>
