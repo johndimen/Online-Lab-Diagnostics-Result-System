@@ -1,22 +1,41 @@
 <?php 
 
-if(isset($_POST['search1'])){
+if(isset($_POST['add'])){
 
-    $eid = $_POST['eid'];
+    $random = mt_rand(0,999999999);
+    $day = date('z');
+    $month = date('m');
+    $resid = "Rst-$random-$month-$day";
 
-    $searchsql = "SELECT * FROM `exam` WHERE `Exam_ID` = '$eid'";
 
-    $searchqry = mysqli_query($conn, $searchsql);
+    $eid = $_POST['examid'];
+    $resultdate = $_POST['resultdate'];
+    $datetaken = $_POST['datetaken'];
+    $result = "N/A";
+    $summary = "N/A";
+    $publish = "No";
 
-    if(empty($searchres = mysqli_fetch_assoc($searchqry))){
-        echo "<script>alert('Exam ID not found!')</script>";
-        echo "<script>location.href='admin-results.php'</script>";
-    }else{
+
+    $addrsltsql = "INSERT INTO `result`(`Result_ID`, `Exam_ID`, `Date_Result`, `Result`, `Summary`, `Is_Published`) 
+                VALUES ('$resid','$eid','$resultdate','$result','$summary','$publish')";
+    $updateexamsql = "UPDATE `exam` SET 
+        `Exam_Taken`='$datetaken',`Is_Done`='Yes' WHERE `Exam_ID` = '$eid'";
+
+    $addrsltqry = mysqli_query($conn,$addrsltsql);
+    mysqli_affected_rows($conn);
+    if(!$addrsltqry){
+        printf("Error: %s\n", mysqli_error($conn));
+        exit();
+    }elseif(mysqli_affected_rows($conn) > 0){
+        $addexamqry = mysqli_query($conn,$updateexamsql);
+
         echo "<script>alert('Successfully Updated!')</script>";
-        echo "<script>location.href='admin-addresult.php'</script>";
+        echo "<script>location.href='admin-results.php'</script>";
+    }else 
+        {
+            echo "<script>alert('Unsuccessfully Updated!')</script>";
+        }
+
     }
     
-}
-
-
 ?>

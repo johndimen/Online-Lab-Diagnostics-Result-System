@@ -3,6 +3,7 @@
 include("php_action/db_config.php");
 include("php_action/session.php");
 include("php_action/retrieve/release.php");
+include("php_action/add/results.php");
 
 if(!isset($_SESSION['login_user'])){
   header("location: admin-login.html");
@@ -65,19 +66,52 @@ if(!isset($_SESSION['login_user'])){
 
 <section class="ftco-section ftco-no-pt  ftco-services-2 bg-light" style="margin-bottom: 30px;">
     <div class="container">
-        <div class=" heading-section ftco-animate">
-            <h5 id="addModalLabel">Add Result</h5>
+        <div class="py-5 heading-section ftco-animate">
+            <h3 align="center" class="mb-3" >Add Result</h3>
         </div>
-        <div class="">
-            <form action="" method="post">
-                <div class="">
-                    <div class="py-sm-3">
-                      <legend>Patient Details</legend>
-                        
+        <div class=" col-12">
+            <form action="" method="POST">
+                <div align="center">
+                    <div class="py-2">
+                      <legend>Exam Details</legend>
+                        <fieldset>
+                          <div class="row">
+                            <div class="col-4">
+                              <label for="examid">Exam ID:</label>
+                            </div>
+                            <div class="col-6">
+                              <select class="appointment-form select2" name="examid" id="examid">
+                                <?php  
+                                  while($patientrslt = mysqli_fetch_assoc($patientqry)){
+
+                                ?>
+                                <option value="">Select Exam ID</option>
+                                <option value="<?php echo $patientrslt['Exam_ID'] ?>"><?php if(empty($patientrslt['Exam_ID'])){ echo "No Records Available!"; }else { echo $patientrslt['Exam_ID']; }?></option>
+                                <?php }?>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-4">
+                              <label class="py-2" for="datetaken">Date Taken:</label>
+                            </div>
+                            <div class="col-6">
+                              <input class="form-control" type="date" name="datetaken" id="datetaken">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-4">
+                              <label class="py-2" for="resultdate">Result Date:</label>
+                            </div>
+                            <div class="col-6">
+                              <input class="form-control" type="date" name="resultdate" id="resultdate">
+                            </div>
+                          </div>
+                        </fieldset>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" name="add" class="btn btn-secondary">Add Result</button>
+                <div class="col-7">
+                    <button style="float:right; margin-right: 30px;" type="submit" name="add" class="btn btn-secondary">Add Result</button>
                 </div>
             </form>
         </div>

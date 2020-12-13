@@ -1,6 +1,6 @@
 <?php
 include("php_action/db_config.php");
-include("php_action/add/results.php");
+#include("php_action/add/results.php");
 
 
 ?>
@@ -65,8 +65,8 @@ include("php_action/add/results.php");
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="patientid">Patient ID</label>
-                            <input type="text" class="form-control" name="patientid" id="patientid">
+                        <label for="patientid">Result ID</label>
+                            <input type="text" class="form-control" name="resultid" id="resultid">
                         <label for="examid" >Exam ID</label>
                             <input type="text" class="form-control" name="examid" id="examid">
                     </div>

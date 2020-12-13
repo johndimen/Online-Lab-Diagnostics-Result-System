@@ -2,7 +2,7 @@
 
 include("php_action/db_config.php");
 include("php_action/session.php");
-include("php_action/retrieve/release.php");
+include("php_action/retrieve/release.php");                                                                                 
 
 if(!isset($_SESSION['login_user'])){
   header("location: admin-login.html");
@@ -67,10 +67,10 @@ if(!isset($_SESSION['login_user'])){
         <div class="row">
           <div class="col-12">
             <div class="col-6">
-              <h2 class="mb-3" style="padding-top: 50px;">Released Request<span> Results</span></h2>
+              <h2 class="mb-3" style="padding-top: 50px;">Unrelease<span> Results</span></h2>
             </div>
             <div class="col-6" style="float: right; padding-bottom: 30px;" >
-              <a type="button" href="admin-addresult.php" style="float: right; margin-top: 10px;" name="search1" id="search1" class="btn btn-info btn-lg">Add Result</a>
+              <a type="button" href="admin-addresult.php" style="float: right; margin-top: 10px;" class="btn btn-info btn-lg">Add Result</a>
             </div>
           </div>
         </div>
@@ -78,11 +78,11 @@ if(!isset($_SESSION['login_user'])){
     <table class="table table-striped table-bordered ftco-animate">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Request #</th>
-            <th scope="col">Patient #</th>
+            <th scope="col">Result #</th>
             <th scope="col">Exam #</th>
-            <th scope="col">Type</th>
-            <th scope="col">Date Taken</th>
+            <th scope="col">Result Release Date</th>
+            <th scope="col">Result</th>
+            <th scope="col">Summary</th>
             <th scope="col">Options</th>
           </tr>
         </thead>
@@ -91,13 +91,13 @@ if(!isset($_SESSION['login_user'])){
           while($relresult = mysqli_fetch_assoc($relqry)){
           ?>
           <tr>
-            <th><?php echo $relresult['Request_ID'] ?></th>
-            <th><?php echo $relresult['Patient_ID'] ?></th>
-            <td><?php echo $relresult['Exam_ID']?></td>
-            <td><?php echo $relresult['Request_Type'] ?></td>
-            <td><?php echo $relresult['Exam_Taken']?></td>
+            <th><?php echo $relresult['Result_ID'] ?></th>
+            <th><?php echo $relresult['Exam_ID'] ?></th>
+            <td><?php echo $relresult['Date_Result']?></td>
+            <td><?php echo $relresult['Result'] ?></td>
+            <td><?php echo $relresult['Summary']?></td>
             <td>
-              <a href="admin-publish.php?id=<?php echo $relresult['Exam_ID'] ?>" class="btn btn-primary btn-lg" title='View Record' data-toggle='tooltip'>View</a>
+              <a href="admin-publish.php?id=<?php echo $relresult['Result_ID'] ?>" class="btn btn-primary btn-lg" title='View Record' data-toggle='tooltip'>View</a>
             </td>
           </tr>
           <?php } ?>

@@ -282,6 +282,12 @@
 			$("#medsummary").attr('disabled', !$("#medsummary").attr('disabled'));
 		});
 	});
+	
+	$(document).ready(function(){
+		$("#editModal").click(function(){
+			$("#eval").attr('disabled', !$("#eval").attr('disabled'));
+		});
+	});
 
 	$(document).ready(function(){
 		$("#testsubmit").click(function(){
@@ -346,7 +352,7 @@
         });
 
 	$(document).ready(function() {
-    $('.search-single').select2();
+    $('#examid').select2();
 	});
 
 })(jQuery);

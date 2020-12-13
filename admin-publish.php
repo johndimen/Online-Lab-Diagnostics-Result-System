@@ -3,11 +3,14 @@
 include("php_action/db_config.php");
 include("php_action/session.php");
 include("php_action/retrieve/release.php");
+include("php_action/add/results.php");
 
 if(!isset($_SESSION['login_user'])){
   header("location: admin-login.html");
   die();
 }
+
+$rid = $_GET['id'];
 
 ?>
 
@@ -64,39 +67,38 @@ if(!isset($_SESSION['login_user'])){
 
 <section class="ftco-section ftco-no-pt  ftco-services-2 bg-light" style="margin-bottom: 30px;">
     <div class="container">
-        <div class=" heading-section ftco-animate" >
-            <h5 class="modal-title" id="exampleModalLabel">Publish Result</h5>
+        <div class=" heading-section py-5 ftco-animate" >
+            <h3 align="center">Publish Result</h3>
         </div>
         <div class="">
-            <form action="" method="post">
+            
                 <div class="">
+                  <div align="center" class="">
                     <legend>Patient Details</legend>
+                  </div>
                     <table class="table table-striped table-bordered ftco-animate">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Patient #</th>
-                                <th scope="col">Patient Name</th>
-                                <th scope="col">Evaluation Result </th>
-                                <th scope="col">Date Finished</th>
+                                <th scope="col">Result #</th>
+                                <th scope="col">Exam #</th>
+                                <th scope="col">Release Result Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th>1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th><?php echo $result1['Result_ID'] ?></th>
+                                <td><?php echo $result1['Exam_ID'] ?></td>
+                                <td><?php echo $result1['Date_Result'] ?></td>
                             </tr>
                         </tbody>
                     </table>
                 </div> 
+            <form action="" method="POST">
                 <div class=" ftco-animate">
+                  <input type="text" name="rid" id="rid" value="<?php echo $result1['Result_ID']?>">
                     <fieldset>
                         <label for="eval">Evaluation Result</label>
-                        <select class="form-control" name="eval" id="eval">
-                            <option value="positive">Positive</option>
-                            <option value="nagative">Negative</option>
-                        </select>
+                        <textarea name="eval" id="eval" class="form-control" disabled="disabled" style="width: 100%;" cols="" rows="3"></textarea>
                     </fieldset>
                 </div>
                 <div class=" ftco-animate">
@@ -107,8 +109,8 @@ if(!isset($_SESSION['login_user'])){
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" name="editModal" id="editModal">Edit</button>
-                    <button type="submit" class="btn btn-secondary">Save changes & Publish</button>
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-secondary" name="save" >Save changes & Publish</button>
+                    <button type="reset" class="btn btn-white">Reset</button>
                 </div>
             </form>
         </div>
