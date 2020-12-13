@@ -85,7 +85,7 @@ include("php_action/search/search.php");
     <div class="container">
         <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
             <table class="table table-striped table-bordered ftco-animate">
-                <h5>Medical Result</h5>
+                <h3 align="center">Medical Result</h3>
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Result ID#</th>
