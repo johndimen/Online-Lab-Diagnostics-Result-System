@@ -1,6 +1,6 @@
 <?php
 include("php_action/db_config.php");
-#include("php_action/add/results.php");
+include("php_action/search/search.php");
 
 
 ?>
@@ -59,33 +59,60 @@ include("php_action/db_config.php");
         <div class=" heading-section ftco-animate" >
             <center><h2 class="mb-3"style="padding-top: 50px;">Search your <span>Result Here</span></h2></center>
         </div>
-    <form action="" method="get" class="ftco-animate">
+    <form action="" method="GET" class="ftco-animate">
         <fieldset>
             <center><legend>Patient Result</legend></center>
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
                         <label for="patientid">Result ID</label>
-                            <input type="text" class="form-control" name="resultid" id="resultid">
-                        <label for="examid" >Exam ID</label>
-                            <input type="text" class="form-control" name="examid" id="examid">
+                            <input type="text" class="form-control" name="resultid" id="resultid" placeholder="Search your result here!">
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="form-group">
-                        <label for="birthday" >Birthdate</label>
-                            <input type="date" class="form-control" name="birthday" id="birthday">
-                    </div>
-                    <div class="form-group" style="padding-top: 28px;">
-                        <button type="submit" value="Search" class="btn btn-secondary btn-lg" name="resultsubmit" id="resultsubmit">Search</button>
+                    <div class="form-group py-4" style="margin-top: 20px;" >
+                        <button type="submit" value="Search" class="btn btn-secondary btn-lg">Search</button>
                         <button type="reset" value="Reset" class="btn btn-outline-primary btn-lg">Reset</button>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#exampleModal">Result Modal</button>
                     </div>
                 </div>
             </div> 
         </fieldset>
     </form>
   </div>
+</section>
+
+<section class="ftco-section py-3 ftco-no-pb ftco-services-2 bg-light">
+    <div class="container">
+        <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
+            <table class="table table-striped table-bordered ftco-animate">
+                <h5>Medical Result</h5>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Result ID#</th>
+                            <th scope="col">Exam ID#</th>
+                        </tr>
+                    </thead>
+                    <?php 
+                        while($searchresult = mysqli_fetch_assoc($searchqry)){
+                    ?>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><?php echo $searchresult['Result_ID']?></th>
+                            <td><?php echo $searchresult['Exam_ID']?></td>
+                        </tr>
+                    </tbody>
+            </table>
+            <div class="">
+                <center><Legend >Evaluation Result</Legend></center>
+                <p align="center"><?php echo $searchresult['Result']?></p>
+            </div>
+            <div class="">
+                <center><legend>Medical Summary</legend></center>
+                <p align="center"><?php echo $searchresult['Summary']?></p>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
 </section>
 
 <section class="ftco-section img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">

@@ -488,7 +488,7 @@ if(isset($_POST['submit'])){
             
         // insert to request table
             $insert = "INSERT INTO `request`(`Request_ID`, `Patient_ID`, `Request_Type`, `Is_Accepted`)
-                     VALUES ('$requestid','$patientid','lab','No')";
+                     VALUES ('$requestid','$patientid','Lab','No')";
             
             $insert_result = mysqli_query($conn, $insert);
             if (!$insert_result) {

@@ -83,7 +83,7 @@ if(!isset($_SESSION['login_user'])){
             <th scope="col">Result Release Date</th>
             <th scope="col">Result</th>
             <th scope="col">Summary</th>
-            <th scope="col">Options</th>
+            <th scope="col">Option</th>
           </tr>
         </thead>
         <tbody>
@@ -91,11 +91,11 @@ if(!isset($_SESSION['login_user'])){
           while($relresult = mysqli_fetch_assoc($relqry)){
           ?>
           <tr>
-            <th><?php echo $relresult['Result_ID'] ?></th>
-            <th><?php echo $relresult['Exam_ID'] ?></th>
-            <td><?php echo $relresult['Date_Result']?></td>
-            <td><?php echo $relresult['Result'] ?></td>
-            <td><?php echo $relresult['Summary']?></td>
+            <th><?php if(empty($relresult['Result_ID'])){ echo "<th>No Record Available</th>"; }else{ echo $relresult['Result_ID']; } ?></th>
+            <th><?php if(empty($relresult['Exam_ID'])){ echo "<th>No Record Available</th>"; }else{ echo $relresult['Exam_ID']; } ?></th>
+            <td><?php if(empty($relresult['Date_Result'])){ echo "<th>No Record Available</th>"; }else{ echo $relresult['Date_Result']; }?></td>
+            <td><?php if(empty($relresult['Result'])){ echo "<th>No Record Available</th>"; }else{ echo $relresult['Result']; }?></td>
+            <td><?php if(empty($relresult['Summary'])){ echo "<th>No Record Available</th>"; }else{ echo $relresult['Summary']; }?></td>
             <td>
               <a href="admin-publish.php?id=<?php echo $relresult['Result_ID'] ?>" class="btn btn-primary btn-lg" title='View Record' data-toggle='tooltip'>View</a>
             </td>

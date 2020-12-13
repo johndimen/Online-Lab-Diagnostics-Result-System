@@ -37,5 +37,31 @@ if(isset($_POST['add'])){
         }
 
     }
+
+if(isset($_POST['save'])){
+
+    $resultid = $_POST['resultid'];
+    $eval = $_POST['eval'];
+    $medsummary = $_POST['medsummary'];
+    $pub = "Yes";
+
+    $updatersltsql = "UPDATE `result` SET `Result`='$eval',`Summary`='$medsummary',`Is_Published`='$pub' 
+                                    WHERE `Result_ID` = '$resultid'";
+
+    $updatersltqry = mysqli_query($conn,$updatersltsql);
+    mysqli_affected_rows($conn);
+    if(!$updatersltqry){
+        printf("Error: %s\n", mysqli_error($conn));
+        exit();
+    }elseif(mysqli_affected_rows($conn) > 0){
+
+        echo "<script>alert('Successfully Updated!')</script>";
+        echo "<script>location.href='admin-results.php'</script>";
+    }else 
+        {
+            echo "<script>alert('Unsuccessfully Updated!')</script>";
+        }
+
+}
     
 ?>

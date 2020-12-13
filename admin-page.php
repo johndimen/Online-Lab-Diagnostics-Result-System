@@ -69,45 +69,52 @@ if(!isset($_SESSION['login_user'])){
   </div>
 
   <table class="table table-striped table-bordered ftco-animate">
-    <h5 class="ftco-animate">Receive</h5>
+    <h3 class="ftco-animate py-5" align="center">Receive</h3>
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Request #</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
+        <th scope="col">Request ID</th>
+        <th scope="col">Patient ID</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Request Type</th>
         <th scope="col">Date Submit</th>
       </tr>
     </thead>
     <tbody>
       <?php 
-      while($receivetable = mysqli_fetch_array($dashquery1)){ ?>
+      while($receivetable = mysqli_fetch_assoc($dashquery1)){
+      ?>
       <tr>
-        <th scope="row"> <?php echo $receivetable[0] ?> </th>
-        <td> <?php echo $receivetable['Patient_Fname'] ?> </td>
-        <td> <?php echo $receivetable['Patient_Lname'] ?> </td>
-        <td> <?php echo $receivetable['Request_Date'] ?> </td>
+        <th scope="row"> <?php if(empty($receivetable['Request_ID'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Request_ID']; } ?></th>
+        <td> <?php if(empty($receivetable['Patient_ID'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Patient_ID']; } ?> </td>
+        <td> <?php if(empty($receivetable['Patient_Fname'] && $receivetable['Patient_Lname'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Patient_Fname']." ".$receivetable['Patient_Lname']; } ?> </td>
+        <td> <?php if(empty($receivetable['Request_Type'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Request_Type']; } ?> </td>
+        <td> <?php if(empty($receivetable['Request_Date'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Request_Date'];} ?> </td>
       </tr>
       <?php }?>
     </tbody>
   </table>
 
   <table id="" cellspacing="0"width="100%" class="table table-striped table-bordered ftco-animate">
-    <h5 class="ftco-animate">Released</h5>
+    <h3 class="ftco-animate py-5" align="center">Released</h3>
     <thead class="thead-dark">
       <tr>
-        <th class="th-sm" scope="col">Patient #</th>
-        <th scope="col">Name</th>
-        <th scope="col">Eval</th>
+        <th class="th-sm" scope="col">Result ID</th>
+        <th scope="col">Exam ID</th>
+        <th scope="col">Evaluation</th>
+        <th scope="col">Medical Summary</th>
         <th scope="col">Date Finished</th>
       </tr>
     </thead>
     <tbody>
-      <?php while($releasetable = mysqli_fetch_array($dashquery2)){ ?>
+      <?php 
+      while($releasetable = mysqli_fetch_assoc($dashquery2)){
+      ?>
       <tr>
-        <th scope="row"> <?php echo $releasetable[0] ?> </th>
-        <td> <?php echo $releasetable['Patient_Name'] ?> </td>
-        <td> <?php echo $releasetable['Result'] ?> </td>
-        <td> <?php echo $releasetable['Date_Result'] ?> </td>
+        <th scope="row"> <?php if(empty($releasetable['Result_ID'])){ echo "<td>No Record Available</td>"; }else{ echo $releasetable['Result_ID']; }  ?> </th>
+        <td> <?php if(empty($releasetable['Exam_ID'])){ echo "<td>No Record Available</td>"; }else{ echo $releasetable['Exam_ID']; } ?> </td>
+        <td> <?php if(empty($releasetable['Result'])){ echo "<td>No Record Available</td>"; }else{ echo $releasetable['Result']; } ?> </td>
+        <td> <?php if(empty($releasetable['Summary'])){ echo "<td>No Record Available</td>"; }else{ echo $releasetable['Summary']; } ?> </td>
+        <td> <?php  if(empty($releasetable['Date_Result'])){ echo "<td>No Record Available</td>"; }else { echo $releasetable['Date_Result']; } ?> </td>
       </tr>
       <?php }?>
     </tbody>

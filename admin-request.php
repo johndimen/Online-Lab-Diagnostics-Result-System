@@ -77,22 +77,22 @@ if(!isset($_SESSION['login_user'])){
           <tr>
             <th scope="col">Request #</th>
             <th scope="col">Patient #</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Request Type</th>
             <th scope="col">Date Requested</th>
             <th scope="col">Option</th>
           </tr>
         </thead>
         <tbody>
         <?php 
-          while($receivetable = mysqli_fetch_array($dashquery)){ 
+          while($receivetable = mysqli_fetch_assoc($dashquery)){
         ?>
           <tr>
-            <th scope="row"> <?php echo $receivetable[0] ?> </th>
-            <th> <?php echo $receivetable['Patient_ID'] ?> </th>
-            <td> <?php echo $receivetable['Patient_Fname'] ?> </td>
-            <td> <?php echo $receivetable['Patient_Lname'] ?> </td>
-            <td> <?php echo $receivetable['Request_Date'] ?> </td>
+            <th scope="row"> <?php if(empty($receivetable['Request_ID'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Request_ID']; } ?></th>
+            <td> <?php if(empty($receivetable['Patient_ID'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Patient_ID']; } ?> </td>
+            <td> <?php if(empty($receivetable['Patient_Fname'] && $receivetable['Patient_Lname'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Patient_Fname']." ".$receivetable['Patient_Lname']; } ?> </td>
+            <td> <?php if(empty($receivetable['Request_Type'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Request_Type']; } ?> </td>
+            <td> <?php if(empty($receivetable['Request_Date'])){ echo "<td>No Record Available</td>"; }else{ echo $receivetable['Request_Date'];} ?> </td>
             <td>
               <a href="admin-requester.php?id=<?php echo $receivetable['Patient_ID'] ?>" class="btn btn-primary btn-lg" title='View Record' data-toggle='tooltip'>View</a>
             </td>

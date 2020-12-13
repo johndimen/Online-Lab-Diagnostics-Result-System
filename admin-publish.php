@@ -86,16 +86,16 @@ $rid = $_GET['id'];
                         </thead>
                         <tbody>
                             <tr>
-                                <th><?php echo $result1['Result_ID'] ?></th>
-                                <td><?php echo $result1['Exam_ID'] ?></td>
-                                <td><?php echo $result1['Date_Result'] ?></td>
+                                <th><?php if(empty($result1['Result_ID'])){ echo "<td>No Available Record"; }else{ echo $result1['Result_ID']; } ?></th>
+                                <td><?php if(empty($result1['Exam_ID'])){ echo "<td>No Available Record"; }else{ echo $result1['Exam_ID']; } ?></td>
+                                <td><?php if(empty($result1['Date_Result'])){ echo "<td>No Available Record"; }else{ echo $result1['Date_Result']; } ?></td>
                             </tr>
                         </tbody>
                     </table>
                 </div> 
             <form action="" method="POST">
                 <div class=" ftco-animate">
-                  <input type="text" name="rid" id="rid" value="<?php echo $result1['Result_ID']?>">
+                  <input type="text" name="resultid" id="resultid" value="<?php echo $result1['Result_ID']?>">
                     <fieldset>
                         <label for="eval">Evaluation Result</label>
                         <textarea name="eval" id="eval" class="form-control" disabled="disabled" style="width: 100%;" cols="" rows="3"></textarea>
