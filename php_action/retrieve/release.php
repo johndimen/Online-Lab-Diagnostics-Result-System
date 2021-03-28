@@ -1,6 +1,11 @@
 <?php
 
+error_reporting(0);
+
+
 $rid = $_GET['id'];
+
+
 
 $releasesql = "SELECT * FROM `result` WHERE `Is_Published` = 'No'";
 

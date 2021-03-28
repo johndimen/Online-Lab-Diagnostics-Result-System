@@ -40,7 +40,7 @@ if(isset($_POST['add'])){
 
 if(isset($_POST['save'])){
 
-    $resultid = $_POST['resultid'];
+    $resultid = $_GET['id'];
     $eval = $_POST['eval'];
     $medsummary = $_POST['medsummary'];
     $pub = "Yes";
@@ -53,12 +53,13 @@ if(isset($_POST['save'])){
     if(!$updatersltqry){
         printf("Error: %s\n", mysqli_error($conn));
         exit();
-    }elseif(mysqli_affected_rows($conn) > 0){
+    }
+
+    if(mysqli_affected_rows($conn) > 0){
 
         echo "<script>alert('Successfully Updated!')</script>";
         echo "<script>location.href='admin-results.php'</script>";
-    }else 
-        {
+    }else{
             echo "<script>alert('Unsuccessfully Updated!')</script>";
         }
 

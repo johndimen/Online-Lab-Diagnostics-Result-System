@@ -81,9 +81,12 @@ include("php_action/search/search.php");
   </div>
 </section>
 
-<section class="ftco-section py-3 ftco-no-pb ftco-services-2 bg-light">
+<section class="ftco-section ftco-animate py-3 bg-light">
     <div class="container">
-        <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
+        <div class="col-md-12 heading-section p-4 p-lg-5">
+            <?php 
+                while($searchresult = mysqli_fetch_assoc($searchqry)){
+            ?>
             <table class="table table-striped table-bordered ftco-animate">
                 <h3 align="center">Medical Result</h3>
                     <thead class="thead-dark">
@@ -92,9 +95,7 @@ include("php_action/search/search.php");
                             <th scope="col">Exam ID#</th>
                         </tr>
                     </thead>
-                    <?php 
-                        while($searchresult = mysqli_fetch_assoc($searchqry)){
-                    ?>
+                    
                     <tbody>
                         <tr>
                             <th scope="row"><?php echo $searchresult['Result_ID']?></th>
@@ -116,81 +117,10 @@ include("php_action/search/search.php");
 </section>
 
 <section class="ftco-section img" style="background-image: url(images/aaa.jpg); width: 50%; margin-left: auto; margin-right: auto ; background-size: contain; padding: 13em 0;">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row justify-content-end">
-            <!--<div class="col-md-7">
-                <h2>Your Health is Our Priority</h2>
-                <p>We can manage your dream building A small river named Duden flows by their place</p>
-                <div class="col-sm-4">
-                    <a href="contact.html" class="btn form-control py-3 px-4 " style="text-align: center;font-size: medium;"> <strong>Contact Us</strong> </a> 
-                </div>				
-            </div>-->
-        </div>
-    </div>
 </section>
 
 <footer class="ftco-footer" style="background-color: #e25446;">
 </footer>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Result</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="max-height: 450px;">
-                    <p>Dear Mr/Ms (patient name here),</p>
-                    <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="result-section">
-                        <div class="container">
-                            <div class="row d-flex">
-                                <div class="col-md-6 col-lg-5 d-flex ftco-animate" style="max-height: 400px;">
-                                    <div class="img w-100 d-flex align-self-lg-auto align-items-center" style="background-image:url(images/result.jpg); background-size: contain;">
-                                </div>
-                                </div>
-                                <div class="col-md-6 col-lg-7 pl-lg-5" style="max-height: 400px;">
-                                    <div class="py-md-5">
-                                        <div class="row justify-content-start pb-3">
-                                            <div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
-                                                <table class="table table-striped table-bordered ftco-animate">
-                                                    <h5>Medical Result</h5>
-                                                    <thead class="thead-dark">
-                                                      <tr>
-                                                        <th scope="col">Patient #</th>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Eval</th>
-                                                      </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                      <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                      </tr>
-                                                    </tbody>
-                                                  </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <center><legend>Medical Summary</legend></center>
-                    <p><center>(Medical summary here)</center></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>

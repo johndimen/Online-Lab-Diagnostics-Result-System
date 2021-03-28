@@ -70,13 +70,13 @@ $rid = $_GET['id'];
         <div class=" heading-section py-5 ftco-animate" >
             <h3 align="center">Publish Result</h3>
         </div>
-        <div class="">
+        <div class="ftco-animate">
             
-                <div class="">
+                <div class="ftco-animate">
                   <div align="center" class="">
                     <legend>Patient Details</legend>
                   </div>
-                    <table class="table table-striped table-bordered ftco-animate">
+                    <table class="table table-striped table-bordered ">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Result #</th>
@@ -86,16 +86,15 @@ $rid = $_GET['id'];
                         </thead>
                         <tbody>
                             <tr>
-                                <th><?php if(empty($result1['Result_ID'])){ echo "<td>No Available Record"; }else{ echo $result1['Result_ID']; } ?></th>
-                                <td><?php if(empty($result1['Exam_ID'])){ echo "<td>No Available Record"; }else{ echo $result1['Exam_ID']; } ?></td>
-                                <td><?php if(empty($result1['Date_Result'])){ echo "<td>No Available Record"; }else{ echo $result1['Date_Result']; } ?></td>
+                                <td><?php if(empty($result1['Result_ID'])){ echo "No Available Record"; }else{ echo $result1['Result_ID']; } ?></td>
+                                <td><?php if(empty($result1['Exam_ID'])){ echo "No Available Record"; }else{ echo $result1['Exam_ID']; } ?></td>
+                                <td><?php if(empty($result1['Date_Result'])){ echo "No Available Record"; }else{ echo $result1['Date_Result']; } ?></td>
                             </tr>
                         </tbody>
                     </table>
                 </div> 
             <form action="" method="POST">
                 <div class=" ftco-animate">
-                  <input type="text" name="resultid" id="resultid" value="<?php echo $result1['Result_ID']?>">
                     <fieldset>
                         <label for="eval">Evaluation Result</label>
                         <textarea name="eval" id="eval" class="form-control" disabled="disabled" style="width: 100%;" cols="" rows="3"></textarea>

@@ -1,5 +1,5 @@
 <?php 
-
+error_reporting(0);
 if(isset($_GET['resultid'])){
 
     $resultid = $_GET['resultid'];

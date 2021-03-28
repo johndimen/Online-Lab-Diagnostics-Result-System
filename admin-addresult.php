@@ -81,11 +81,10 @@ if(!isset($_SESSION['login_user'])){
                             </div>
                             <div class="col-6">
                               <select class="appointment-form select2" name="examid" id="examid">
+                                <option value="">Select Exam ID</option>
                                 <?php  
                                   while($patientrslt = mysqli_fetch_assoc($patientqry)){
-
                                 ?>
-                                <option value="">Select Exam ID</option>
                                 <option value="<?php echo $patientrslt['Exam_ID'] ?>"><?php if(empty($patientrslt['Exam_ID'])){ echo "No Records Available!"; }else { echo $patientrslt['Exam_ID']; }?></option>
                                 <?php }?>
                               </select>
